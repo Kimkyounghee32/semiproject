@@ -126,3 +126,57 @@ ul.navcategory ul>li>a {
 ul.Gallery {
 	max-width: 100px;
 }
+
+div.maininfo,div.mainjayu{
+/* 	border:2px solid black; */
+}
+
+div.mainglmbti {
+	padding:15px;
+	margin-top:10px;
+    display: flex;
+    height: auto;
+}
+div.maingl{
+	width:80%;
+}
+div.mainmbti{
+	overflow:hidden;
+	width:20%;
+}
+
+div.mainmbti>img{
+	max-width: 100%;
+    height: auto;
+}
+div.mainboard {
+	padding:15px;
+    display: flex;
+    height: auto;
+}
+div.maininfo{
+	width:45%;
+}
+
+div.mainjayu{
+	width:45%;
+	margin-left:100px;
+}
+
+div.test1{
+	width: 32%;
+	display: inline-flex;
+}
+
+div.test0 {
+    width: 34%;
+    display: inline-flex;
+}
+div.test0 img{
+	max-width: 100%;
+	height: auto;
+}
+div.test1 img{
+	max-width: 100%;
+	height: auto;
+}
