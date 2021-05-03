@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="today">
-		<jsp:include page="/today/todayphoto.jsp" />
+		<jsp:include page="/today/test.jsp" />
 	</div>
 </body>
 </html>
