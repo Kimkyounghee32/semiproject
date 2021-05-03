@@ -5,60 +5,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="main.css" />
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
-	div.camera img{
-	width: 300px;
-	position: absolute;
-	left: 40%;
-	top: 10%;
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+	#mbtipage {
+	min-width: 1200px;
+	max-width: 1200px;
+	margin: auto;
+	padding: 10px;
+	height: 100vh;
 	}
-	
-	div.choose{
-	position: absolute;
-	left: 40%;
-	top: 50%;
+
+	#startbtn{
+	 margin-top: 800px;
+ 	 margin-bottom: 100px;
+ 	 margin-left: 400px;
+ 	 margin-right: 0;
+ 	 font-size: 50pt;
+ 	 font-family: 'Gamja Flower';
+ 	 line-height: 60px;
 	}
+	div.img{	
+	background-image:url('mbtistart.png');
+	width: 1120px;
+	height: 1200px;
 	
-	div.text{
-	position: absolute;
-	left: 40%;
-	top: 3%;
 	}
-	
-	div.text2{
-	position: absolute;
-	left: 30%;
-	top: 35%;
-	}
-	
+
 </style>
 </head>
 <body>
-<div class="text">
-	<h2><b>당신 성향에 맞는 카메라는?</b></h2>
-</div>
-<div class="camera">
-<img src="mbtimain.jpg">
-</div>
-<div class="text2">
-	<h2>낯선 곳으로 사진출사를 나가기로 한 당신! <br><br>누구랑 갈 것인가요??</h2>
-</div>
-<div class="choose">
-<button type="button" class="btn btn-info btn-lg" style="background-color : black; border: none;">
-누구랑 가긴 누구랑 가! 무조건 혼자 간다!
+<div id="mbtipage">
+<div class="img">
+<div class="test">
+<button type="button" class="btn btn-info btn-lg" id="startbtn" 
+style="background-color : #4B89DC; border: none; width: 300px; height: 80px;" 
+onclick="location.href='test1.jsp'">
+start
 </button>
-<br>
-<br>
-<button type="button" class="btn btn-info btn-lg" style="background-color : black; border: none;">
-낯선 곳은 무서우니까~ 커뮤니티에서 친구를 구한다!
-</button>
+
 </div>
-<script type="text/javascript">
-   location.href="main.jsp?go=mbtimain.jsp";
-</script>
+</div>
+</div>
 </body>
 </html>
