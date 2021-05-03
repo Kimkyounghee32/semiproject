@@ -27,7 +27,6 @@
 		<div>
 			<jsp:include page="layout/nav.jsp" />
 		</div>
-		
 		<div class="body">
 			<jsp:include page="<%=body %>" />
 		</div>
@@ -91,9 +90,6 @@
 
 </div>
 
-
-
 	</div>
-
 </body>
 </html>

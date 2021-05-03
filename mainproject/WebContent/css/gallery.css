@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.gallery-img {
+	float: left;
+	position: flex;
+	width: 235px;
+	height: 250px;
+	margin: 15px;
+}
+
+.container {
+	diplay: grid;
+	width: 1200px;
+}
+
+ul li {
+	list-style: none;
+}
+
+.pagebar .ul {
+	width: 1200px;
+	margin-left:480px;
+}
+
+.pagination {
+	width: 1200px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-left:480px;
+}

@@ -162,6 +162,7 @@ div.test1 img{
 }
 
 #footer{
+	border-top:1px solid black;
 	display: flex;
 }
 .footer_cc {
