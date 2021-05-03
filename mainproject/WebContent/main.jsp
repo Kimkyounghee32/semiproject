@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="main.css" />
 <!-- 3.4.1 MaxCDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
@@ -21,24 +22,21 @@
 	if(go!=null)body=go;
 %>
 <body>
-<div id="page">
-	<div>
-		<jsp:include page="layout/title.jsp"/>
+	<div id="page">
+		<div>
+			<jsp:include page="layout/title.jsp" />
+		</div>
+		<div>
+			<jsp:include page="layout/nav.jsp" />
+		</div>
+		<div id="loginpage" class="container-fluid">
+			<jsp:include page="login/login.jsp" />
+		</div>
+		<div class="body">
+			<jsp:include page="<%=body %>" />
+		</div>
+		
 	</div>
-	<div>
-		<jsp:include page="layout/nav.jsp"/>
-	</div>
-	<div id = "today">
-		<jsp:include page="today/todayphoto.jsp"/>
-	</div>
-	<div id="loginpage" class="container-fluid">
-		<jsp:include page="login/login.jsp"/>
-	</div>
-	<div class="body">
-		<jsp:include page="<%=body %>"/>
-	</div>
-	
-</div>
 
 </body>
 </html>

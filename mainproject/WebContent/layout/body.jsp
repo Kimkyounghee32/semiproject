@@ -11,6 +11,8 @@
 </style>
 </head>
 <body>
-body
+	<div id="today">
+		<jsp:include page="today/todayphoto.jsp" />
+	</div>
 </body>
 </html>

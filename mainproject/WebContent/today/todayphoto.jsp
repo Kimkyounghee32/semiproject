@@ -1,57 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<!-- 3.4.1 MaxCDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
 </head>
+<%
+	//body를 읽어서 널일경우 body.jsp를 include
+	//널이 아닐경우 해당 파일을 include
+	String body="layout/body.jsp";
+	String go=request.getParameter("go");//경로 포함한 파일명
+	if(go!=null)body=go;
+%>
 <body>
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-	<!-- Indicators -->
-	<ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-	</ol>
-
-	<!-- Wrapper for slides -->
-	<div class="carousel-inner">
-		<div class="item active">
-			<img src="image/image1.jpg" alt="..." class="img-responsive center-block">
-			<div class="carousel-caption">
-				<h3>Subject</h3>
-			</div>
-		</div>
-
-		<div class="item">
-			<img src="image/image2.jpg" alt="..." class="img-responsive center-block">
-			<div class="carousel-caption">
-				<h3>Subject</h3>	
-			</div>
-		</div>
-		<script type="text/javascript">
-			doc
-		</script>
-		<div class="item">
-			<img src="image/tenor.gif" alt="..." class="img-responsive center-block">
-			<div class="carousel-caption">
-				<h3>Subject</h3>
-			</div>
-		</div>
+<div id="page">
+	<div>
+		<jsp:include page="layout/title.jsp"/>
 	</div>
-
-	<!-- Left and right controls -->
-	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left"></span>
-		<span class="sr-only">Previous</span>
-	</a>		
-	<a class="right carousel-control" href="#myCarousel" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right"></span>
-		<span class="sr-only">Next</span>
-	</a>
+	<div>
+		<jsp:include page="layout/nav.jsp"/>
+	</div>
+	<div id="loginpage" class="container-fluid">
+		<jsp:include page="login/login.jsp"/>
+	</div>
+	<div class="body">
+		<jsp:include page="<%=body %>"/>
+	</div>
+	
 </div>
+
 </body>
 </html>
