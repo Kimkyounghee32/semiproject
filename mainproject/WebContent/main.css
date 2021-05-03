@@ -2,7 +2,7 @@
 @charset "UTF-8";
 
 #page {
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	min-width: 1200px;
 	max-width: 1200px;
 	margin: auto;
@@ -25,6 +25,7 @@ div#loginpage input {
 div#loginpage {
     margin-right: 3px;
 	float:right;
+	font-size:18px;
 }
 
 div#logo {
@@ -131,6 +132,7 @@ div.mainboard {
 	padding:15px;
     display: flex;
     height: auto;
+    font-size:25px;
 }
 div.maininfo{
 	width:45%;
