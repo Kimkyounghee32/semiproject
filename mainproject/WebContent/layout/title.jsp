@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="logo">
-				<img src="logo.jpg" /> <a  href="main.jsp"><b>Pick Picturese</b></a>
+				<img src="logo.jpg" /> <a  href="main.jsp"><b>Pick Pictures</b></a>
 			</div>
 
 			<div id="search">
