@@ -160,3 +160,21 @@ div.test1 img{
 	max-width: 100%;
 	height: auto;
 }
+
+#footer{
+	display: flex;
+}
+.footer_cc {
+    width: 50%;
+}
+
+
+.footerlist>li {
+    list-style: none;
+    float: left;
+    margin-right: 30px;
+}
+
+ul.footerlist {
+    padding-left: 0px;
+}
