@@ -23,13 +23,13 @@
 <body>
 <div id="page">
 	<div>
-		<jsp:include page="layout/title.jsp"/>
+		<jsp:include page="/layout/title.jsp"/>
 	</div>
 	<div>
-		<jsp:include page="layout/nav.jsp"/>
+		<jsp:include page="/layout/nav.jsp"/>
 	</div>
 	<div id="loginpage" class="container-fluid">
-		<jsp:include page="login/login.jsp"/>
+		<jsp:include page="/login/login.jsp"/>
 	</div>
 	<div class="body">
 		<jsp:include page="<%=body %>"/>

@@ -10,9 +10,7 @@
 <!-- 3.4.1 MaxCDN -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <%
 	//body를 읽어서 널일경우 body.jsp를 include
