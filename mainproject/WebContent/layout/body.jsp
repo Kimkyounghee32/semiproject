@@ -51,7 +51,6 @@
 			class="sr-only">Next</span>
 		</a>
 	</div>
-<<<<<<< HEAD
 	
 	<div class="mainglmbti">
 	<div class="maingl">

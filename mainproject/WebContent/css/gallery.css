@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+img{
+	vertical-align: middle;
+	position: flex;
+	width: 200px;
+	height: 200px;
+}
