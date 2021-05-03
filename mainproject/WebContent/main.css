@@ -45,12 +45,8 @@ div#loginpage input {
 }
 
 div#loginpage {
-	display: flex;
-	flex-direction: column;
-	align-content: flex-end;
-	width: 200px;
-	margin-left: auto;
-	margin-right: 18px;
+    margin-right: 3px;
+	float:right;
 }
 
 div#logo {
@@ -64,8 +60,10 @@ div#logo>img {
 }
 
 div#search {
-	display: inline-flex;
-	height: 40px;
+    display: flex;
+    height: 40px;
+    justify-content: flex-end;
+    margin-right: 17px;
 }
 
 div#nav {

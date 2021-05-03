@@ -9,6 +9,9 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
+			<div id="loginpage" class="container-fluid">
+				<jsp:include page="/login/login.jsp" />
+			</div>
 <div id="logo">
 				<img src="logo.jpg" /> <a  href="main.jsp"><b>Pick Pictures</b></a>
 			</div>
@@ -17,5 +20,6 @@
 				<input type="text" placeholder="검색어를 입력해주세요" />
 				<button type="button" class="btn btn-primary btn-sm">검색</button>
 			</div>
+			
 </body>
 </html>
