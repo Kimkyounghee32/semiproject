@@ -138,8 +138,6 @@ span.glyphicon-chevron-left{
 				</div>
 			</div>
 	</div>
-<script type="text/javascript">
-   location.href="main.jsp?go=mbtimain.jsp";
-</script>
+
 </body>
 </html>
