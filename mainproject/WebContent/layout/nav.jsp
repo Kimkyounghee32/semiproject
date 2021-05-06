@@ -24,15 +24,15 @@
 					<li id="gc"><a >Community</a>
 						<div>
 							<ul class="Community">
-								<li href="main.jsp?go=gallery/"><a>정보공유</a></li>
-								<li href="main.jsp?go=gallery/"><a>자유게시판</a></li>
+								<li><a href="main.jsp?go=board/info/infolist.jsp">정보공유</a></li>
+								<li><a href="main.jsp?go=board/jayu/jayulist.jsp">자유게시판</a></li>
 							</ul>
 						</div></li>
 					<li id="gs"><a>Support</a>
 						<div>
 							<ul class="Support">
-								<li href="main.jsp?go=gallery/"><a>자주하는 질문</a></li>
-								<li href="main.jsp?go=gallery/"><a>1:1문의</a></li>
+								<li><a href="main.jsp?go=gallery/">자주하는 질문</a></li>
+								<li><a href="main.jsp?go=gallery/">1:1문의</a></li>
 							</ul>
 						</div></li>
 				</ul>

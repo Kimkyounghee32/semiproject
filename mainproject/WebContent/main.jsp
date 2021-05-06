@@ -24,11 +24,11 @@
 		<div class="title">
 			<jsp:include page="layout/title.jsp" />
 		</div>
-		<div>
-			<jsp:include page="layout/nav.jsp" />
+		<div class="nav">
+			<jsp:include page="layout/nav.jsp"/>
 		</div>
 		<div class="body">
-			<jsp:include page="<%=body %>" />
+			<jsp:include page="<%=body %>"/>
 		</div>
 		<div>
 			<jsp:include page="layout/footer.jsp" />

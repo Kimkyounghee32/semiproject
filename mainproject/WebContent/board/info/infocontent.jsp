@@ -34,7 +34,8 @@
 
 </body>
 <table class="table table-bordered" style="width: 600px; margin-left: 100px;">
-	<caption>내용확인</caption>
+	<caption>정보게시글상세</caption>
+	<hr style="border: 1px solid black;">
 	<tr>
 		<td>
 			<b><%=dto.getWriter() %></b>
@@ -58,20 +59,19 @@
 	</tr>
 		<tr>
 		<td align="right">
-			<button type="button" class="btn btn-info btn-sm"
+			<button type="button" class="btn btn-info btn-xm"
 				style="width: 100px;"
-				onclick="location.href='main.jsp?go=board/boardlist.jsp?pageNum=<%=pageNum%>'">목록</button>
+				onclick="location.href='main.jsp?go=board/info/infolist.jsp?pageNum=<%=pageNum%>'">목록</button>
 				
-			<button type="button" class="btn btn-info btn-sm"
+			<button type="button" class="btn btn-info btn-xm"
 					style="width: 100px;"
-					onclick="location.href='main.jsp?go=board/updateform.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">수정</button>
+					onclick="location.href='main.jsp?go=board/info/updateform.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">수정</button>
 
-			<button type="button" class="btn btn-info btn-sm"
+			<button type="button" class="btn btn-info btn-xm"
 					style="width: 100px;"
-					onclick="location.href='board/delete.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">삭제</button>
+					onclick="location.href='board/info/delete.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">삭제</button>
 
 		</td>
 	</tr>
-	
 </table>
 </html>

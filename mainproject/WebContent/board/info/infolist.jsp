@@ -36,6 +36,7 @@ span.glyphicon-chevron-left{
 }
 </style>
 </head>
+
 <%
 	InfoBoardDao dao=new InfoBoardDao();
 	int totalCount=dao.getTotalCount();
@@ -123,7 +124,7 @@ span.glyphicon-chevron-left{
 							<td align="left">
 								<%
 									//key 는 조회수 증가를 목록에서 클릭한 경우에만 증가하기 위한 값
-									String path="main.jsp?go=board/info/infolist.jsp?num="
+									String path="main.jsp?go=board/info/infocontent.jsp?num="
 									+dto.getNum()+"&pageNum="+currentPage+"&key=list";
 								%>
 								<a href="<%=path%>" style="color:black;">
@@ -140,8 +141,6 @@ span.glyphicon-chevron-left{
 							<%=dto.getReadcount()%></span>
 							</td>
 						</tr>
-							
-						
 					<%}
 					}
 				%>
@@ -154,7 +153,7 @@ if(totalCount>0){
 	<ul class="pagination">
 	<%
 		if(startPage>1){
-			String pre="main.jsp?go=board/info/infolist.jsp.jsp?pageNum"+(startPage-1);	
+			String pre="main.jsp?go=board/info/infolist.jsp?pageNum"+(startPage-1);	
 			%>
 			<li><a href="<%=pre%>">이전</a></li>
 	<%} 
@@ -183,17 +182,11 @@ if(totalCount>0){
 		<span class="glyphicon glyphicon-chevron-left" id="pre"></span>
 		<span class="glyphicon glyphicon-chevron-right" id="next"></span>
 		<button type="button" class="btn btn btn-primary btn-xs" style="float: right; margin-left: 10px;"
-			onclick="location.href='main.jsp?go=board/info/infoform'">
+			onclick="location.href='main.jsp?go=board/info/infoform.jsp'">
 			<span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
-		<button type="button" class="btn btn btn-primary btn-xs" style="float: right;">새로고침
-		</button>
 		
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-
-
-</script>
 </body>
 </html>
