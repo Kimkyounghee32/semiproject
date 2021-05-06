@@ -20,7 +20,7 @@
 	if(go!=null)body=go;
 %>
 <body>
-	<div id="page">
+	<div class="page">
 		<div class="title">
 			<jsp:include page="layout/title.jsp" />
 		</div>

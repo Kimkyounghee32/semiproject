@@ -1,3 +1,13 @@
 @charset "UTF-8";
 
+input.hp{
+	width:100px;
+}
 
+input.lgm{
+	margin-top:30px;
+}
+
+b.loginjsp{
+	cursor: pointer;
+}

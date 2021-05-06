@@ -12,12 +12,14 @@
 			<div id="loginpage" class="container-fluid">
 				<jsp:include page="/login/login.jsp" />
 			</div>
-			<div id="logodiv">
+			<div class="logodiv2">
+			<div class="logodiv">
 				<!-- <div id="logo">
 					<img src="logo.jpg" /> <a  href="main.jsp"><b>Pick Pictures</b></a>
 				</div> -->
 				<jsp:include page="logo.jsp" />
 				
+			</div>
 			</div>
 			<div id="search">
 				<input type="text" placeholder="검색어를 입력해주세요" />

@@ -1,7 +1,6 @@
-
 @charset "UTF-8";
 
-#page {
+div.page {
 /*    border: 1px solid black; */
    min-width: 1200px;
    max-width: 1800px;
@@ -14,8 +13,11 @@ div#title>a {
    color: black;
 }
 
+div.logodiv2{
+	margin-left: 280px;
+}
 
-div#logodiv {
+div.logodiv {
     text-align: center;
 }
 
@@ -30,13 +32,13 @@ div#loginpage {
    font-size:18px;
 }
 
-div#logo {
+div.logo {
    display: inline-flex;
    font-size: 80px;
-   margin-left: 200px;
+/*    margin-left: 200px; */
 }
 
-div#logo>img {
+div.logo>img {
    width: 130px;
 }
 
