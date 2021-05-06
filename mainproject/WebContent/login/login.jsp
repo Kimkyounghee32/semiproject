@@ -9,6 +9,6 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-<b>로그인</b> <b>회원가입</b> <b>ID/PW찾기</b>
+<b onclick="location.href='login/loginform.jsp'">로그인</b> <b>회원가입</b> <b>ID/PW찾기</b>
 </body>
 </html>
