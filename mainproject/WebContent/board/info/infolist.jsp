@@ -184,7 +184,7 @@ if(totalCount>0){
 		<span class="glyphicon glyphicon-chevron-left" id="pre"></span>
 		<span class="glyphicon glyphicon-chevron-right" id="next"></span>
 		<button type="button" class="btn btn btn-primary btn-xs" style="float: right; margin-left: 10px;"
-			onclick="location.href='/mainproject/main.jsp?go=board/info/infoform.jsp'">
+			onclick="location.href='main.jsp?go=board/info/infoform.jsp'">
 			<span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
 		
 		</div>

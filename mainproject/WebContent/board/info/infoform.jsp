@@ -31,23 +31,7 @@ h3{
 %>
 
 <!-- 글쓰기 전 로그인 여부 확인 -->
-<%
-	String loginok=(String)session.getAttribute("loginok");
-	if(loginok==null){%>
-		<script type="text/javascript">
-			alert("글을 쓰려면 먼저 로그인을 해주세요");
-			history.back();
-		</script>
-	<%}else{
-		//답글일 경우 2가지 읽기
-		String num=request.getParameter("num");
-		String pageNum=request.getParameter("pageNum");
-		
-		if(num==null){  //integer로 바꿀때 널포인트익셉션이나 넘버포맷익셉션 오류 막기 위해 0으로선언			
-			num="0";
-			pageNum="1";
-		}
-	%>
+
 
 
 <!-- se2폴더에서 js파일 가져오기  -->
