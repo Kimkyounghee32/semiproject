@@ -30,10 +30,6 @@ h3{
 	 String root=request.getContextPath();
 %>
 
-<!-- 글쓰기 전 로그인 여부 확인 -->
-
-
-
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
@@ -44,12 +40,15 @@ charset="utf-8"></script>
 <body>
 <div class="container" role="main">
 	<h3>정보게시글 작성</h3>
-	<form action="board/info/infoaction.jsp" method="post">
+	<form action="board/info/insertaction.jsp" method="post">
+		<br>
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
+			<br>
 			<p style="background-color: #ccccc">※ 저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다. </p>
 		</div>
+		<br>
 		<div class="mb-3">
 			<label for="content">내용</label>
 			<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" 
@@ -57,7 +56,7 @@ charset="utf-8"></script>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
-			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jps'">목록</button>
+			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp'">목록</button>
 		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
 			style="width: 100px; float:right;" onclick="submitContents(this)">작성완료</button>
 		

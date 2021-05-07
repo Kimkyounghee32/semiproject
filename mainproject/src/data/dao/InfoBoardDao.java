@@ -171,6 +171,30 @@ public class InfoBoardDao {
 			return n;
 		}
 		
+		
+		public int updateLikes(String num) {
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			String sql= "update infoboard set likes=likes+1 where num=?";
+			int n =0;
+			conn=db.getConnection();
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, num);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+			return n;
+			
+		}
+		
+		
+		
 		//num에 해당하는 dto데이터 반환
 		public InfoBoardDto getData(String num) 
 		{
