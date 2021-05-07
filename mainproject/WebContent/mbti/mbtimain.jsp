@@ -42,7 +42,7 @@
 <div class="test">
 <button type="button" class="btn btn-info btn-lg" id="startbtn" 
 style="background-color : #4B89DC; border: none; width: 300px; height: 80px;" 
-onclick="location.href='../mbti/test.jsp'">
+onclick="location.href='test.jsp'">
 start
 </button>
 
