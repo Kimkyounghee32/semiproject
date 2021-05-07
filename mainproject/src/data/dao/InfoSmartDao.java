@@ -10,13 +10,13 @@ import java.util.Vector;
 import data.dto.InfoBoardDto;
 import oracle.db.DbConnect;
 
-public class InfoBoardDao {
+public class InfoSmartDao {
 	DbConnect db=new DbConnect();
 	
 	public void insertInfo(InfoBoardDto dto)
 	{
 		
-		String sql="insert into infoboard values (seq_mini.nextval,"
+		String sql="insert into infosmartbbs values (seq_mini.nextval,"
 				+ "?,?,?,0,sysdate)";
 		
 		Connection conn=null;
@@ -52,7 +52,7 @@ public class InfoBoardDao {
 			
 			conn=db.getConnection();
 			
-			String sql="select nvl(max(num),0) from infoboard"; 
+			String sql="select nvl(max(num),0) from infosmartbbs"; 
 			//NVL 함수는 값이 null인 경우 지정값을 출력한다=멕시멈 num을 출력하는데, 널일때는 0 출력
 			
 			int n=0;
@@ -80,7 +80,7 @@ public class InfoBoardDao {
 			
 			conn=db.getConnection();
 			
-			String sql="select count(*) from infoboard"; 
+			String sql="select count(*) from infosmartbbs"; 
 			
 			int n=0;
 			try {
@@ -109,7 +109,7 @@ public class InfoBoardDao {
 			conn=db.getConnection();
 			
 			 String sql = "select a.* from (select ROWNUM as RNUM,b.* from "
-			            + "(select * from infoboard order by num desc)b)a "
+			            + "(select * from infosmartbbs order by num desc)b)a "
 			            + "where a.RNUM>=? and a.RNUM<=?"; //페이징처리할꺼니까 물음표는 그대로
 			 
 			
@@ -152,7 +152,7 @@ public class InfoBoardDao {
 		{	
 			Connection conn=null;
 			PreparedStatement pstmt=null;
-			String sql="update infoboard set readcount=readcount+1 where num=?";
+			String sql="update infosmartbbs set readcount=readcount+1 where num=?";
 			int n=0;
 			conn=db.getConnection();
 			
@@ -181,7 +181,7 @@ public class InfoBoardDao {
 			
 			conn=db.getConnection();
 			
-			String sql="select * from infoboard where num=?";
+			String sql="select * from infosmartbbs where num=?";
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -211,11 +211,11 @@ public class InfoBoardDao {
 		
 		
 		//수정
-		public void updateInfo(String subject, String content, String image, String num) 
+		public void updateSmart(InfoBoardDto dto) 
 		{	
 			Connection conn=null;
 			PreparedStatement pstmt=null;
-			String sql="update infoboard set subject=?, content=?, image=?"
+			String sql="update infosmartbbs set writer=?, subject=?, content=? "
 					+ "where num=?";
 			
 			conn=db.getConnection();
@@ -223,10 +223,10 @@ public class InfoBoardDao {
 			
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, subject);
-				pstmt.setString(2, content);
-				pstmt.setString(3, image);
-				pstmt.setString(4, num);
+				pstmt.setString(1, dto.getWriter());
+				pstmt.setString(2, dto.getSubject());
+				pstmt.setString(3, dto.getContent());
+				pstmt.setString(4, dto.getNum());
 				//실행
 				pstmt.execute();
 			} catch (SQLException e) {
@@ -240,14 +240,14 @@ public class InfoBoardDao {
 				
 		
 		//삭제
-		public void deleteInfo(String num) 
+		public void deleteinfoboard(String num) 
 		{	
 			Connection conn=null;
 			PreparedStatement pstmt=null;
 			
 			conn=db.getConnection();
 			
-			String sql="delete from infoboard where num=?";
+			String sql="delete from infosmartbbs where num=?";
 			
 			
 			try {
