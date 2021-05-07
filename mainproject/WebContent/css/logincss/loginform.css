@@ -1,13 +1,20 @@
 @charset "UTF-8";
 
-input.hp{
-	width:100px;
-}
-
 input.lgm{
 	margin-top:30px;
 }
 
 b.loginjsp{
 	cursor: pointer;
+}
+
+div.lgmdiv {
+	margin-top:30px;
+    text-align:center;
+}
+div.lgmdiv>input, div.lgmdiv>button,div.lgmdiv>select{
+    width: 380px;
+    margin: auto;
+    margin-top: 30px;
+    height: 50px;
 }
