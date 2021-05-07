@@ -30,25 +30,6 @@ h3{
 	 String root=request.getContextPath();
 %>
 
- <!-- 글쓰기 전 로그인 여부 확인 -->
-<%--<%
-	String loginok=(String)session.getAttribute("loginok");
-	if(loginok==null){--%>
-		<script type="text/javascript">
-			alert("글을 쓰려면 먼저 로그인을 해주세요");
-			history.back();
-		</script>
-	<%--<%}else{
-		//답글일 경우 2가지 읽기
-		String num=request.getParameter("num");
-		String pageNum=request.getParameter("pageNum");
-		
-		if(num==null){  //integer로 바꿀때 널포인트익셉션이나 넘버포맷익셉션 오류 막기 위해 0으로선언			
-			num="0";
-			pageNum="1";
-		}
-	--%>
-	
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
@@ -60,19 +41,6 @@ charset="utf-8"></script>
 <div class="container" role="main">
 	<h3>정보게시글 작성</h3>
 	<form action="board/info/infoaction.jsp" method="post">
-	<%-- <input type="hidden" name="num" value="<%=num %>">
-	<input type="hidden" name="pageNum" value="<%=pageNum %>"> --%>
-	<%
-				//세션에서 아이디 얻어오기
-				String myid=(String)session.getAttribute("mid");
-			%>
-			<!--<caption><b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b></caption>-->
-		
-		<div>
-			<input type="text" name="myid" class="form-control" readonly="readonly"
-			style="width: 120px;" value="<%=myid%>">
-			
-		</div> 	
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
@@ -85,14 +53,12 @@ charset="utf-8"></script>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
-			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='main.jsp?go=board/info/infolist.jps'">목록</button>
+			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jps'">목록</button>
 		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
 			style="width: 100px; float:right;" onclick="submitContents(this)">작성완료</button>
 		
 		</div>
 	</form>
-	<%}	
-%>
 </div>
 <!-- 스마트게시판에 대한 코드넣기 -->
 <script type="text/javascript">

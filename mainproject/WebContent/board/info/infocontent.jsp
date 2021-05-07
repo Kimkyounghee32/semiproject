@@ -73,7 +73,7 @@
 		<td align="right">
 			<button type="button" class="btn btn btn-primary btn-xs"
 				style="width: 80px;"
-				onclick="location.href='main.jsp?go=board/info/infolist.jsp?pageNum=<%=pageNum%>'">목록</button>
+				onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp?pageNum=<%=pageNum%>'">목록</button>
 				
 			<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 800px;"

@@ -155,14 +155,14 @@ if(totalCount>0){
 	<ul class="pagination">
 	<%
 		if(startPage>1){
-			String pre="main.jsp?go=board/info/infolist.jsp?pageNum"+(startPage-1);	
+			String pre="/mainproject/main.jsp?go=board/info/infolist.jsp?pageNum"+(startPage-1);	
 			%>
 			<li><a href="<%=pre%>">이전</a></li>
 	<%} 
 	//페이지 번호
 	for(int i=startPage;i<=endPage;i++)
 	{
-		String path="main.jsp?go=board/info/infolist.jsp?pageNum="+i;
+		String path="/mainproject/main.jsp?go=board/info/infolist.jsp?pageNum="+i;
 		if(i==currentPage){%>
 		 <li class=active"><a href="<%=path%>"><%=i%></a><li>
 		<%}else{ %>
@@ -171,7 +171,7 @@ if(totalCount>0){
 	}
 	
 		if(endPage<totalPage){ //다음 : 다음블럭의 첫페이지가 active. 
-			String next="main.jsp?go=board/info/infolist.jsp?="+(endPage+1);
+			String next="/mainproject/main.jsp?go=board/info/infolist.jsp?="+(endPage+1);
 			%>
 			<li><a href="<%=next%>">다음</a></li>
 		<%}
