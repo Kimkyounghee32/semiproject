@@ -21,21 +21,19 @@
 		</div>
 	</div>
 	<div class="container">
-		<ul>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
-			<li><img class="gallery-img" src="image/test.jpg"></li>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
+			<div class="img-list"><img class="gallery-img" src="image/image2.jpg"></div>
 
-		</ul>
 	</div>
 
 	<div>
