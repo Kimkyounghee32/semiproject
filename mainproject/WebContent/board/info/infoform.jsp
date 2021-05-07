@@ -30,6 +30,9 @@ h3{
 	 String root=request.getContextPath();
 %>
 
+<!-- 글쓰기 전 로그인 여부 확인 -->
+
+
 
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
