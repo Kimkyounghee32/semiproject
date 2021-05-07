@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class InfoBoardDto {
 	
 	private String num;
-	private String writer;
+	private String myid;
 	private String subject;
 	private String content;
 	private int likes;
@@ -21,10 +21,10 @@ public class InfoBoardDto {
 		this.num = num;
 	}
 	public String getWriter() {
-		return writer;
+		return myid;
 	}
 	public void setWriter(String writer) {
-		this.writer = writer;
+		this.myid = writer;
 	}
 	public String getSubject() {
 		return subject;

@@ -88,6 +88,8 @@ span.glyphicon-chevron-left{
 	no=totalCount-(currentPage-1)*perPage;
 	
 	//start부터 end까지 게시글 가져오기
+	System.out.println(start);
+	System.out.println(end);
 	List<InfoBoardDto> list=dao.getList(start, end);
 %>
 <body>
