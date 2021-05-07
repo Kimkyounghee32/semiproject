@@ -1,4 +1,5 @@
-<%@page import="javax.swing.text.Document"%>
+<%@page import="data.dto.InfoBoardDto"%>
+<%@page import="data.dao.InfoBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,53 +30,39 @@ h3{
 	 //프로젝트의 경로
 	 String root=request.getContextPath();
 %>
+</head>
+<body>
+<%
 
- <!-- 글쓰기 전 로그인 여부 확인 -->
-<%--<%
-	String loginok=(String)session.getAttribute("loginok");
-	if(loginok==null){--%>
-		<script type="text/javascript">
-			alert("글을 쓰려면 먼저 로그인을 해주세요");
-			history.back();
-		</script>
-	<%--<%}else{
-		//답글일 경우 2가지 읽기
-		String num=request.getParameter("num");
-		String pageNum=request.getParameter("pageNum");
-		
-		if(num==null){  //integer로 바꿀때 널포인트익셉션이나 넘버포맷익셉션 오류 막기 위해 0으로선언			
-			num="0";
-			pageNum="1";
-		}
-	--%>
-	
+//num 읽기
+	String num=request.getParameter("num");
+	//수정 후 보던페이지로 가기위해서 start도 읽음
+	String start=request.getParameter("start");
+	//num에 해당하는 dto 얻기
+	InfoBoardDao dao=new InfoBoardDao();
+	InfoBoardDto dto=dao.getData(num);
+%>
+
+
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
 <script type="text/javascript" src="<%=root %>/se2/js/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
 charset="utf-8"></script>
 
-</head>
-<body>
-<div class="container" role="main">
-	<h3>정보게시글 작성</h3>
-	<form action="board/info/infoaction.jsp" method="post">
-	<%-- <input type="hidden" name="num" value="<%=num %>">
-	<input type="hidden" name="pageNum" value="<%=pageNum %>"> --%>
-	<%
-				//세션에서 아이디 얻어오기
-				String myid=(String)session.getAttribute("mid");
-			%>
-			<!--<caption><b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b></caption>-->
+
+<div class="update">
+	<h3>정보게시글 수정</h3>
+	<form action="board/info/infoupdateaction.jsp" method="post">
+	
+	<!-- hidden  -->
+		<input type="hidden" name="num" value="<%=num%>">
+		<input type="hidden" name="start" value="<%=start%>">
 		
-		<div>
-			<input type="text" name="myid" class="form-control" readonly="readonly"
-			style="width: 120px;" value="<%=myid%>">
-			
-		</div> 	
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
+			<br>
 			<p style="background-color: #ccccc">※ 저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다. </p>
 		</div>
 		<div class="mb-3">
@@ -85,15 +72,14 @@ charset="utf-8"></script>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
-			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='main.jsp?go=board/info/infolist.jps'">목록</button>
-		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
-			style="width: 100px; float:right;" onclick="submitContents(this)">작성완료</button>
-		
+			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jps'">목록</button>
+		<button type="submit" class="btn btn-sm btn-primary" id="btnSave"
+			style="width: 100px; float:right;">수정완료</button>
 		</div>
 	</form>
-	<%}	
-%>
 </div>
+
+
 <!-- 스마트게시판에 대한 코드넣기 -->
 <script type="text/javascript">
 var oEditors = [];
