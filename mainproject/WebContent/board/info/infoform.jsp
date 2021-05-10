@@ -28,6 +28,21 @@ h3{
 <%
 	 //프로젝트의 경로
 	 String root=request.getContextPath();
+
+	//답글일 경우 num읽기
+	String num=request.getParameter("num");
+	String reg=request.getParameter("reg");
+	String restep=request.getParameter("restep");
+	String relevel=request.getParameter("relevel");
+	String pageNum=request.getParameter("pageNum");
+	
+	if(num==null){//integer로 바꿀때 널포인트익셉션이나 넘버포맷익셉션 오류 막기 위해 0으로 선언
+		num="0";
+		reg="0";
+		restep="0";
+		relevel="0";
+		pageNum="1";
+	}
 %>
 
 <!-- se2폴더에서 js파일 가져오기  -->
@@ -41,7 +56,13 @@ charset="utf-8"></script>
 <div class="container" role="main">
 	<h3>정보게시글 작성</h3>
 	<form action="board/info/insertaction.jsp" method="post">
+	<input type="hidden" name="num" value="<%=num%>">
+	<input type="hidden" name="pagenum" value="<%=pageNum%>">
+	<input type="hidden" name="restep" value="<%=restep %>">
+	<input type="hidden" name="relevel" value="<%=relevel %>">
+	<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<br>
+		<b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b>
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
@@ -59,7 +80,6 @@ charset="utf-8"></script>
 			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp'">목록</button>
 		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
 			style="width: 100px; float:right;" onclick="submitContents(this)">작성완료</button>
-		
 		</div>
 	</form>
 </div>

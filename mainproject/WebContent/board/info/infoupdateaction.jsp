@@ -10,11 +10,10 @@
 	String start=request.getParameter("start"); //게스트업데이트부분에서 추가함
 	String subject=request.getParameter("subject");
 	String content=request.getParameter("content");
-	String image=request.getParameter("image");
 	
 	//dao 선언후 수정
 	InfoBoardDao dao=new InfoBoardDao();
-	dao.updateInfo(subject, content, image, num);
+	dao.updateInfo(subject, content, num);
 	
 	/* //목록으로 이동
 	response.sendRedirect("../main.jsp?go=board/boardlist.jsp"); */

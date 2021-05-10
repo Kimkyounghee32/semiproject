@@ -1,3 +1,4 @@
+<%@page import="data.dao.InfoAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.InfoBoardDto"%>
 <%@page import="java.util.List"%>
@@ -34,6 +35,11 @@ span.glyphicon-chevron-left{
   margin-left: 600px;
   margin-right: 0;
 }
+
+.pagenation {
+    max-width: 660px;  /* 넓이값은 자식요소들의 넓이합과 같아야지 정 가운데로 맞출 수 있습니다.*/
+    margin:0 auto;  /* div 하나일때 가운데 정렬*/
+}
 </style>
 </head>
 
@@ -57,7 +63,7 @@ span.glyphicon-chevron-left{
 	
 	//현재 페이지(pageNum 이 널일땐 무조건 1페이지로 이동)
 	String pageNum=request.getParameter("pageNum");
-	if(pageNum==null)
+	if(pageNum==null || pageNum.equals("null"))
 		currentPage=1;
 	else
 		currentPage=Integer.parseInt(pageNum);
@@ -115,23 +121,51 @@ span.glyphicon-chevron-left{
 					</td>
 				</tr>
 				<%}else{
+					//게시판 테이블 출력
 					SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+					//댓글 dao
+					InfoAnswerDao adao=new InfoAnswerDao();
 					for(InfoBoardDto dto:list)
 					{
+						//각 글의 댓글 갯수를 acount에 넣어둔다
+						int acount=adao.getboardanswerList(String.valueOf(dto.getNum())).size();
+						//String.valueOf() = 괄호안에 있는 모든 타입을 스트링으로 바꿔준다.
+						
 					%>
 						<tr align="center"></tr>
 							<td><%=no--%></td>
 							<td align="left">
 								<%
 									//key 는 조회수 증가를 목록에서 클릭한 경우에만 증가하기 위한 값
-									String path="main.jsp?go=board/info/infocontent.jsp?num="
+									String path="/mainproject/main.jsp?go=board/info/infocontent.jsp?num="
 									+dto.getNum()+"&pageNum="+currentPage+"&key=list";
 								%>
 								<a href="<%=path%>" style="color:black;">
-									<%=dto.getSubject()%></a>
+								<!-- relevel에 따라서 제목앞에 공백넣기 -->
+								<%
+								for(int i=1;i<=dto.getRelevel();i++)
+								{%>
+								&nbsp;&nbsp;&nbsp;<!-- 레벨 1당 공백3칸 -->
+								<%}
+					
+								//답글일 경우는 앞에 이미지 넣기
+								if(dto.getRelevel()>0) //Relevel이 0보다 클때 이미지 넣어줌(0은 원글)
+								{%>
+								<img alt="" src="image/re.png">
+								<%}
+								%>
+								<%=dto.getSubject()==null?"제목없음":dto.getSubject()%>
+								<!-- 댓글 갯수 출력 : 있을 경우에만 출력 -->
+								<%
+								if(acount>0){
+									%>
+									<span style="margin-left: 5px; color: gray;">
+									(<%=acount%>)</span>
+									<%} %>
+									</a>
 							</td>
 							<td>
-								<%=dto.getWriter()%>
+								<%=dto.getMyid()%>
 							</td>
 							<td><%=sdf.format(dto.getWriteday()) %></td>
 							<td><%=dto.getLikes()%></td>
@@ -151,7 +185,7 @@ span.glyphicon-chevron-left{
 <%
 if(totalCount>0){
 %>
-<div style="width: 800px; text-align: center;">
+<div class="pagenation" style="width: 800px; text-align: center;">
 	<ul class="pagination">
 	<%
 		if(startPage>1){
@@ -181,9 +215,10 @@ if(totalCount>0){
 <%}
 %>
 		<div class="container">
-		<span class="glyphicon glyphicon-chevron-left" id="pre"></span>
-		<span class="glyphicon glyphicon-chevron-right" id="next"></span>
-		<button type="button" class="btn btn btn-primary btn-xs" style="float: right; margin-left: 10px;"
+		<!-- <span class="glyphicon glyphicon-chevron-left" id="pre"></span>
+		<span class="glyphicon glyphicon-chevron-right" id="next"></span> -->
+		<button type="button" class="btn btn btn-primary btn-xs" 
+			style="float: right;  margin-bottom: 50px;"
 			onclick="location.href='main.jsp?go=board/info/infoform.jsp'">
 			<span class="glyphicon glyphicon-pencil"></span>글쓰기</button>
 		
