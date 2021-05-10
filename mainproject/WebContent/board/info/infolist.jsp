@@ -124,7 +124,7 @@ span.glyphicon-chevron-left{
 				</tr>
 				<%}else{
 					//게시판 테이블 출력
-					SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+					SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd");
 					//댓글 dao
 					InfoAnswerDao adao=new InfoAnswerDao();
 					for(InfoBoardDto dto:list)
