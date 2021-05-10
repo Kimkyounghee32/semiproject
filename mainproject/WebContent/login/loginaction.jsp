@@ -1,3 +1,4 @@
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -9,15 +10,17 @@
 <jsp:setProperty property="*" name="dto"/>
 <%
 	
+		JSONObject ob=new JSONObject();
 	if(dao.logincheck(dto.getId(), dto.getPwd())){
-		//session 만들고 이전에 있던 화면으로	
+		//로그인성공
 		session.setAttribute("id",dto.getId());
 		session.setAttribute("loginok", "yes");
 		session.setMaxInactiveInterval(60*10);
-		response.sendRedirect("/mainproject/main.jsp");		
-	}
-	else{
-		
+		ob.put("id", true);
 	}
 
-%>
+	else{
+		ob.put("id",false);
+	}
+
+%><%=ob.toString()%>
