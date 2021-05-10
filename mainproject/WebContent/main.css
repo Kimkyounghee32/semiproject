@@ -128,7 +128,7 @@ div.mainmbti{
    width:20%;
 }
 
-div.mainmbti>img{
+div.mainmbti>a>img{
    max-width: 100%;
     height: auto;
 }

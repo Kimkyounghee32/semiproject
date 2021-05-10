@@ -10,8 +10,33 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
+<%
+	
+	if(session.getAttribute("loginok")=="yes"){
+		String id=(String)session.getAttribute("id");
+	%>
+	<b><%=id %>님</b>
+	<b class="loginjsp" onclick="location.href='login/mypage.jsp'">마이페이지</b> 
+	<b class="loginjsp" onclick="logout()">로그아웃</b> 
+
+<%	}
+	else{%>
 <b class="loginjsp" onclick="location.href='login/loginform.jsp'">로그인</b> 
 <b class="loginjsp" onclick="location.href='login/createuser.jsp'">회원가입</b> 
 <b class="loginjsp" onclick="location.href='login/.jsp'">아이디찾기</b>
+		
+<%} %>	
 </body>
+<script type="text/javascript">
+	function logout(){
+		<%
+ 		session.removeAttribute("id");
+ 		session.removeAttribute("loginok");
+		%>
+		console.log("시발");
+		location.href="/mainproject/main.jsp";
+	}
+
+
+</script>
 </html>

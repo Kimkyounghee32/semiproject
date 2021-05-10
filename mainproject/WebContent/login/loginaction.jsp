@@ -1,14 +1,26 @@
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-</head>
-<body>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
-</body>
-</html>
+<jsp:useBean id="dao" class="data.dao.logindao"></jsp:useBean>
+<jsp:useBean id="dto" class="data.dto.logindto"></jsp:useBean>
+<jsp:setProperty property="*" name="dto"/>
+<%
+	
+		JSONObject ob=new JSONObject();
+	if(dao.logincheck(dto.getId(), dto.getPwd())){
+		//로그인성공
+		session.setAttribute("id",dto.getId());
+		session.setAttribute("loginok", "yes");
+		session.setMaxInactiveInterval(60*10);
+		ob.put("id", true);
+	}
+
+	else{
+		ob.put("id",false);
+	}
+
+%><%=ob.toString()%>

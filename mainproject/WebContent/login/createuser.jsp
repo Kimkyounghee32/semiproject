@@ -8,8 +8,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/mainproject/css/logincss/loginform.css" />
 <link rel="stylesheet" type="text/css" href="/mainproject/main.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	#ida{
+		height:20px;
+	}
+</style>
 </head>
 <body>
 <div class="page">
@@ -17,12 +21,13 @@
 	<jsp:include page="../layout/logo.jsp"></jsp:include>
 </div>
 
-<form method="post" action="createuseraction.jsp">
 	<div class="lgmdiv">
-		<input type="text" class="lgm form-control" name="id" placeholder="아이디를 입력해주세요">
-		<input type="text" class="lgm form-control" name="pw" placeholder="패스워드를 입력해주세요">
-		<input type="text" class="lgm form-control" name="email" placeholder="패스워드를 입력해주세요">
-		<select class="lgm form-control" name="hpw">
+		<input type="text" class="lgmid" name="id" placeholder="아이디를 입력해주세요(필수)">
+		<button type="button" class="dfkid">중복체크</button>
+		<div id="ida"></div>
+		<input type="text" class="lgm" name="pwd" placeholder="패스워드를 입력해주세요(필수)">
+		<input type="text" class="lgm" name="email" placeholder="이메일을 입력해주세요(선택)">
+		<select class="lgm" name="hpw">
                                         <option value="233">
                                             가나 +233
                                         </option>
@@ -666,10 +671,61 @@
                                             홍콩 +852
                                         </option>
                         </select>
-		<input type="text" class="lgm form-control" name="hp" placeholder="전화번호를 입력해주세요">
-		<button class="btn btn-success" type="submit">로그인</button>
+		<input type="text" class="lgm" name="hp" placeholder="전화번호를 입력해주세요(필수)">
+		<button class="btn btn-success" type="submit">회원가입</button>
 	</div>
-</form>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+	$("button.dfkid").click(function(){
+		$.ajax({
+			type:"post",
+			url:"idcheck.jsp",
+			dataType:"json",
+			data:{"id": $("input[name='id']").val()},
+			success:function(data){
+				if(data.id==false){
+					$("#ida>a").remove();
+					$("#ida").append("<a>사용 가능한 아이디입니다");
+				}
+				else if(data.id==true){
+					$("#ida>a").remove();
+					$("#ida").append("<a>이미 가입된 아이디입니다");
+			}}
+		});
+	});
+	
+	$("input[name=hp]").keydown(function(event) {
+		if(event.keyCode>="96" && event.keyCode<="105" ||event.keyCode>="48" && event.keyCode<="57" || event.keyCode=="8");
+		
+		else {
+			alert("숫자만 입력해주세요");	
+		}
+	});
+	$("button[type=submit]").click(function(){
+		const hp=$("select[name=hpw]").val()+$("input[name='hp']").val();
+			if($("#ida>a").text()=="사용 가능한 아이디입니다");
+			else {
+				alert("아이디를 변경해주세요");return;
+				}
+		$.ajax({
+			type:"post",
+			url:"createuseraction.jsp",
+			dataType:"html",
+			data:{"id": $("input[name='id']").val(),
+				"pwd":$("input[name='pwd']").val(),
+				"email":$("input[name='email']").val(),
+				"hp":hp},
+				success:function(data){
+				
+					location.href="/mainproject/main.jsp";
+			
+			}
+		});
+	});
+})
+
+
+</script>
 </html>

@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<div class="mainmbti">
-		<img alt="경로잘못됨" src="mainmbti.png">
+		<a onclick="location.href='/mainproject/mbti/mbtimain.jsp'"><img alt="경로잘못됨" src="mainmbti.png"></a>
 	</div>
 	</div>
 	
