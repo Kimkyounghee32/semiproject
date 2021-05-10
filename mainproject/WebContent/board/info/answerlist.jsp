@@ -13,7 +13,7 @@
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	//MemberDao mdao=new MemberDao();
 	for(InfoAnswerDto dto:list)
-	{ //String name=mdao.getName(dto.getMyid());
+	{ 
 %>
 	<answer idx="<%=dto.getIdx()%>" num="<%=dto.getNum()%>">
 	<content><%=dto.getContent()%></content>

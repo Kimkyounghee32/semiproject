@@ -42,7 +42,7 @@ public class InfoBoardDao {
 		}
 
 		String sql="insert into infoboard values (seq_mini.nextval,"
-				+ "?,?,?,?,?,?,?,0,sysdate)";
+				+ "?,?,?,?,?,?,0,0,sysdate)";
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -196,7 +196,6 @@ public class InfoBoardDao {
 					dto.setRestep(rs.getInt("restep"));
 					dto.setRelevel(rs.getInt("relevel"));
 					dto.setReadcount(rs.getInt("readcount"));
-					dto.setImage(rs.getString("image"));
 					dto.setWriteday(rs.getTimestamp("writeday"));
 					
 					list.add(dto);
@@ -288,7 +287,6 @@ public class InfoBoardDao {
 					dto.setRestep(rs.getInt("restep"));
 					dto.setRelevel(rs.getInt("relevel"));
 					dto.setReadcount(rs.getInt("readcount"));
-					dto.setImage(rs.getString("image"));
 					dto.setWriteday(rs.getTimestamp("writeday"));	
 				}
 			} catch (SQLException e) {

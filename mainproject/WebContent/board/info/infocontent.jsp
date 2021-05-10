@@ -32,6 +32,13 @@ h4{
 	 //프로젝트의 경로
 	 String root=request.getContextPath();
 %>
+
+<%
+	//로그아웃시에도 아이디가 세션에 있기 때문에 게시글에서 수정삭제가 보인다.
+	//로그인한 상태인지 확인
+	String loginok=(String)session.getAttribute("loginok");
+
+%>
 </body>
 <script type="text/javascript">
 
@@ -65,8 +72,7 @@ h4{
 						
 						s+=name+"("+myid+"):"+content+"<span class='aday'>";
 						s+=writeday;
-						
-						<%-- var login="<%=%>";
+						var login="<%=loginok%>";
 						console.log(login);
 						//댓글도 로그인 상태에만 본인이 쓴 댓글에 한해서
 						//수정 삭제 아이콘이 보이도록 한다 --%>
@@ -75,9 +81,10 @@ h4{
 						var logid=$("#myid").val();//로그아이디는 인풋타입이니까 val()추가
 						console.log(logid);
 						
-						//if(login=='yes'&& logid==myid){ //로그인한아이디가 글쓴사람아이디와 같으면
-						s+="<span class='amod glyphicon glyphicon-pencil' idx="+idx+"></span>";
-						s+="<span class='adel glyphicon glyphicon-remove' idx="+idx+"></span>";
+						if(login=='yes'&& logid==myid){ //로그인한아이디가 글쓴사람아이디와 같으면
+							s+="<span class='amod glyphicon glyphicon-pencil' idx="+idx+"></span>";
+							s+="<span class='adel glyphicon glyphicon-remove' idx="+idx+"></span>";
+						}
 						s+="</span><br>"
 							$("div.alist").html(s);
 						//}
@@ -85,7 +92,6 @@ h4{
 				}
 			})
 		}
-	}
 	
 	
 	$(function(){
@@ -189,10 +195,10 @@ h4{
 	
 	//날짜타입
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	System.out.println(sdf);
+	//System.out.println(sdf);
 	
-	//작성자 이름 얻어오기
-	String myid=dto.getMyid();
+	//작성자 id 얻어오기
+	String mid=dto.getMyid();
 	
 %>
 <table class="table table-bordered" style="width: 1000px; border-color: white;">
@@ -249,6 +255,17 @@ h4{
 				//delete는 경로에서 메인을 통할 필요가 없음. 보여줄게 없기 때문에->바로 삭제할 예정.
 			%>
 			
+			<%
+				//세션에서 로그인한 아이디를 얻는다
+				String myid=(String)session.getAttribute("mid");
+				
+				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
+				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
+				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
+				{
+					
+			%>
+			
 		<button type="button" class="btn btn btn-primary btn-xs"
 			style="width: 60px; margin-left: 2px;"
 			onclick="location.href='<%=mod%>'" idx="">수정</button>
@@ -256,6 +273,8 @@ h4{
 		<button type="button" class="btn btn btn-primary btn-xs"
 			style="width: 60px; margin-left: 2px;"
 			id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button>	
+			
+		<%} %>
 
 </table>
 	<br>
@@ -279,17 +298,15 @@ h4{
 	})
 </script>
 
-		<input type="hidden" name="myid" id="myid" value="<%=myid%>">
+		<input type="hidden" name="myid" id="myid" value="<%=mid%>">
 		<input type="hidden" name="num" id="num" value="<%=num%>">	
 		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
 		
 		
-		<div style="width:600px; margin-left: 250px;" class="form-inline">
-			<div id="add">
+		<div style="width:750px; margin-left: 250px;" class="form-inline" id="add">
 			<input type="text" class="form-control" style="width: 700px;"
 				id="acontent" placeholder="댓글을 입력해주세요">
-			<button type="button" class="btn btn-primary btn-xs" id="btnadd" style="float: right;">확인</button>
-			</div>		
+			<button type="button" class="btn btn-primary btn-xs" id="btnadd" style="float: right;">확인</button>		
 		</div>
 
 <div class="alist"></div>

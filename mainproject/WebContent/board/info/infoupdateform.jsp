@@ -61,14 +61,14 @@ charset="utf-8"></script>
 		
 		<div class="mb-3">
 			<label for="subject">제목</label>
-			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
+			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" value="<%=dto.getSubject()%>">
 			<br>
 			<p style="background-color: #ccccc">※ 저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다. </p>
 		</div>
 		<div class="mb-3">
 			<label for="content">내용</label>
 			<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" 
-				style="width: 100%; height: 500px; display: none;"></textarea>
+				style="width: 100%; height: 500px; display: none;"><%=dto.getContent()%></textarea>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"

@@ -13,51 +13,22 @@ public class InfoBoardDto {
 	private int restep;
 	private int relevel;
 	private int readcount;
-	
-	
-	public int getReg() {
-		return reg;
-	}
-	public void setReg(int reg) {
-		this.reg = reg;
-	}
-	public int getRestep() {
-		return restep;
-	}
-	public void setRestep(int restep) {
-		this.restep = restep;
-	}
-	public int getRelevel() {
-		return relevel;
-	}
-	public void setRelevel(int relevel) {
-		this.relevel = relevel;
-	}
-	public int getAcount() {
-		return acount;
-	}
-	public void setAcount(int acount) {
-		this.acount = acount;
-	}
-	private String image;
 	private Timestamp writeday;
 	private int acount;
 	
-
+	
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
 	public String getMyid() {
 		return myid;
 	}
 	public void setMyid(String myid) {
 		this.myid = myid;
 	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -76,17 +47,29 @@ public class InfoBoardDto {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
+	public int getReg() {
+		return reg;
+	}
+	public void setReg(int reg) {
+		this.reg = reg;
+	}
+	public int getRestep() {
+		return restep;
+	}
+	public void setRestep(int restep) {
+		this.restep = restep;
+	}
+	public int getRelevel() {
+		return relevel;
+	}
+	public void setRelevel(int relevel) {
+		this.relevel = relevel;
+	}
 	public int getReadcount() {
 		return readcount;
 	}
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
 	}
 	public Timestamp getWriteday() {
 		return writeday;
@@ -94,8 +77,15 @@ public class InfoBoardDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
-	
+	public int getAcount() {
+		return acount;
+	}
+	public void setAcount(int acount) {
+		this.acount = acount;
+	}
 	
 	
 	
 }
+	
+

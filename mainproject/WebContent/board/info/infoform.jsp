@@ -62,7 +62,7 @@ charset="utf-8"></script>
 	<input type="hidden" name="relevel" value="<%=relevel %>">
 	<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<br>
-		<b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b>
+		<b><%=num.equals("0")?"글쓰기":"답글쓰기"%></b>
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>

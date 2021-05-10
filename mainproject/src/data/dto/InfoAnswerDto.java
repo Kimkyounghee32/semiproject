@@ -8,6 +8,7 @@ public class InfoAnswerDto {
 	private String content;
 	private int num;
 	private Timestamp writeday;
+	
 	public String getIdx() {
 		return idx;
 	}
