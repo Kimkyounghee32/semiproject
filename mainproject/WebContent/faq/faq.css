@@ -11,13 +11,14 @@
 }
 
 div.form{
-	margin-top: 100px;
-    margin-left: 330px;
+	margin-top: 50px;
+    margin-left: 650px;
     font-family: 'Noto Sans KR';
+    height: 1300px;
 }
 
 #title{
-	font-size: 2.5em;
+	font-size: 3em;
 	font-family: 'Noto Sans KR';
 	color : #4B89DC;
 	margin-left: 80px;
@@ -37,22 +38,55 @@ div.qnaa{
 	margin-left: -60px;
 }
 
-a.qnatag{
+a.qnatag:hover{
 	text-decoration: none;
-	
+}
+p.subject{
+	font-weight: bold;	
 }
 
 ul.qna{
 	width: 800px;
+	list-style: none;
+	margin-top: 30px;
 }
 
 #qnacont{
 	border : #4B89DC solid 3px;
 	border-radius: 20px;
 	display: block;
-	line-height: 70px;
-	width: 600px;
+	line-height: 45px;
+    width: 600px;
+    font-weight: bold;
+    background-color: #DCEBFF;
 }
 
+b.asearch{
+	font-family: 'Noto Sans KR';
+	font-weight: bold;
+}
 
+.dsearch{
+	margin-left: 450px;
+	font-size: 1.5em;
+	border : #4B89DC solid 3px;
+	border-radius: 20px;
+	display: block;
+	line-height: 45px;
+    width: 600px;
+    background-color: #DCEBFF;
+}
 
+div.btn{
+	margin-left: 450px;
+	
+}
+#btnSearch{
+	border: none;
+	background-color : white;
+}
+span.search{
+	font-size: 2em;
+    color: #2E64FE;
+    
+}
