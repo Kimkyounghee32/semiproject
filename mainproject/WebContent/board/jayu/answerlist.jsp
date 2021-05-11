@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<%@page import="data.dto.jayuAnswerDto"%>
+<%@page import="data.dao.jayuAnswerDao"%>
 <%@page import="java.util.List"%>
-<%@page import="data.dto.InfoAnswerDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.dao.InfoAnswerDao"%>
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <data>
@@ -14,11 +14,11 @@
 <%
 	String num=request.getParameter("num");
 	String myid=(String)session.getAttribute("myid");	
-	InfoAnswerDao dao=new InfoAnswerDao();
-	List<InfoAnswerDto> list=dao.getinfoanswerList(num);
+	jayuAnswerDao dao=new jayuAnswerDao();
+	List<jayuAnswerDto> list=dao.getJayuAnswerList(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	//MemberDao mdao=new MemberDao();
-	for(InfoAnswerDto dto:list)
+	for(jayuAnswerDto dto:list)
 	{ 
 %>
 	<answer idx="<%=dto.getIdx()%>" num="<%=dto.getNum()%>">

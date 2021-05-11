@@ -7,14 +7,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import data.dto.InfoAnswerDto;
+import data.dto.jayuAnswerDto;
+import data.dto.jayuAnswerDto;
 import oracle.db.DbConnect;
 
-public class InfoAnswerDao {
+public class jayuAnswerDao {
 
 DbConnect db=new DbConnect();
 	
-	public void insertanswer(InfoAnswerDto dto)
+	public void insertanswer(jayuAnswerDto dto)
 	//게시글에 달린 글이기 때문에 넘버로 받아와야한다
 	//sql문 물음표3개
 	{
@@ -24,7 +25,7 @@ DbConnect db=new DbConnect();
 		conn=db.getConnection();
 		
 		
-		String sql="insert into infoboardanswer values (seq_mini.nextval,?,?,?,sysdate)";	
+		String sql="insert into jayuboardanswer values (seq_mini.nextval,?,?,?,sysdate)";	
 		 try {
 	         pstmt=conn.prepareStatement(sql);
 	         //바인딩
@@ -42,17 +43,17 @@ DbConnect db=new DbConnect();
 	   }
 	
 	
-	public List<InfoAnswerDto> getinfoanswerList(String num)
+	public List<jayuAnswerDto> getJayuAnswerList(String num)
 	
 	{
-		List<InfoAnswerDto> list=new Vector<InfoAnswerDto>();
+		List<jayuAnswerDto> list=new Vector<jayuAnswerDto>();
 		  Connection conn=null;
 	      PreparedStatement pstmt=null;
 	      ResultSet rs=null;
 	      
 	      conn=db.getConnection();
 	      
-	      String sql="select *from infoboardanswer where num=? order by idx desc ";	
+	      String sql="select *from jayuboardanswer where num=? order by idx desc ";	
 	      int n=0;
 	      try {
 				pstmt=conn.prepareStatement(sql);
@@ -62,7 +63,7 @@ DbConnect db=new DbConnect();
 				rs=pstmt.executeQuery();
 				while(rs.next())
 				{
-					InfoAnswerDto dto=new InfoAnswerDto();
+					jayuAnswerDto dto=new jayuAnswerDto();
 					dto.setIdx(rs.getString("idx"));
 					dto.setMyid(rs.getString("myid"));
 					dto.setContent(rs.getString("content"));
@@ -83,16 +84,16 @@ DbConnect db=new DbConnect();
 	
 	
 	//idx에 해당하는 dto데이터 반환
-	public InfoAnswerDto getData(String idx) 
+	public jayuAnswerDto getData(String idx) 
 	{
-		InfoAnswerDto dto= new InfoAnswerDto();
+		jayuAnswerDto dto= new jayuAnswerDto();
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
 		conn=db.getConnection();
 		
-		String sql="select * from infoboardanswer where idx=?";
+		String sql="select * from jayuboardanswer where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -118,12 +119,12 @@ DbConnect db=new DbConnect();
 	}
 	
 	//댓글 수정메소드
-			public void updateboardanswer(String idx, String content) 
+			public void updateanswer(String idx, String content) 
 			{
 				
 				 Connection conn=null;
 		         PreparedStatement pstmt=null;
-		         String sql="update infoboardanswer set content=? where idx=?";
+		         String sql="update jayuboardanswer set content=? where idx=?";
 		         conn=db.getConnection();
 		         try {
 		            pstmt=conn.prepareStatement(sql);
@@ -141,11 +142,11 @@ DbConnect db=new DbConnect();
 			
 			
 			//댓글 삭제메소드
-			public void deleteboardanswer(String idx) 
+			public void deletejayuanswer(String idx) 
 			{
 				Connection conn=null;
 				PreparedStatement pstmt=null;
-				String sql="delete from infoboardanswer where idx=?";
+				String sql="delete from jayuboardanswer where idx=?";
 				conn=db.getConnection();
 		        try {
 		           pstmt=conn.prepareStatement(sql);

@@ -11,5 +11,5 @@
 	InfoAnswerDao dao=new InfoAnswerDao();
 	dao.deleteboardanswer(idx);
 	
-	response.sendRedirect("/mainproject/main.jsp?go=board/info/answerlist.jsp?pageNum="+pageNum);
+	response.sendRedirect("/mainproject/main.jsp?go=board/jayu/answerlist.jsp?pageNum="+pageNum);
 %>

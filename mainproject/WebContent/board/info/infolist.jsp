@@ -140,7 +140,7 @@ span.glyphicon-chevron-left{
 							<td align="left" style="width:800px;">
 								<%
 									//key 는 조회수 증가를 목록에서 클릭한 경우에만 증가하기 위한 값
-									String path="/mainproject/main.jsp?go=board/info/infocontent.jsp?num="
+									String path="/mainproject/main.jsp?go=board/info/content.jsp?num="
 									+dto.getNum()+"&pageNum="+currentPage+"&key=list";
 								%>
 								<a href="<%=path%>" style="color:black;">
@@ -176,7 +176,7 @@ span.glyphicon-chevron-left{
 								
 									//String myid=(String)session.getAttribute("mid");
 								%>
-									<%=id%>
+									<%=dto.getMyid()%>
 							</td>
 							<td style="width:100px;"><%=sdf.format(dto.getWriteday()) %></td>
 							<td style="width:100px;"><%=dto.getLikes()%></td>
