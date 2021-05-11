@@ -18,7 +18,7 @@
 <div class="lgmdiv">
 		<input type="text" class="lgm form-control" name="id" placeholder="아이디를 입력해주세요">
 		<input type="text" class="lgm form-control" name="pwd" placeholder="패스워드를 입력해주세요">
-		<button class="btn btn-success" type="submit">로그인</button>
+		<button id="loginac" class="btn btn-success" type="submit">로그인</button>
 </div>
 	<div class="lgmdiv">
 		<a href="findID.jsp">아이디 찾기</a> <a href="findPW.jsp">비밀번호 찾기</a> <a href="createuser.jsp">회원가입</a>
@@ -26,25 +26,27 @@
 </div>
 </body>
 <script type="text/javascript">
-	document.querySelector("button").addEventListener("click", function(e) {
+// 	document.querySelector("sdfsdfsdfsdf").addEventListener("click", function(e) {
+	$("#loginac").click(function(){
 		$.ajax({
-			type:"post",
-			url:"loginaction.jsp",
-			dataType:"json",
-			data:{"id":$("input[name=id]").val(),
-				"pwd":$("input[name=pwd]").val()},
-			success:function(data){
-				if(data.id==true){
-				console.log("성공");
-				location.href="/mainproject/main.jsp";
-				}
-				else{
-					alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
-				}
-			}		
-		});
+				type:"post",
+				url:"loginaction.jsp",
+				dataType:"json",
+				data:{"id":$("input[name=id]").val(),
+					"pwd":$("input[name=pwd]").val()},
+				success:function(data){
+					if(data.id==2){
+					console.log(data.id);
+					location.href="/mainproject/main.jsp";
+					}
+					else{
+						alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
+					}
+				}		
+			});
+	});
 		
-	});			
+// 	});			
 
 </script>
 </html>

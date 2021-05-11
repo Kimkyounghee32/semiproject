@@ -11,14 +11,17 @@
 <link rel="stylesheet" type="text/css" href="main.css" />
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
+<body>
 <%
 	//body를 읽어서 널일경우 body.jsp를 include
 	//널이 아닐경우 해당 파일을 include
 	String body="layout/body.jsp";
 	String go=request.getParameter("go");//경로 포함한 파일명
 	if(go!=null)body=go;
+		
+		String id=(String)session.getAttribute("id");
+
 %>
-<body>
 	<div class="page">
 		<div class="title">
 			<jsp:include page="layout/title.jsp" />
