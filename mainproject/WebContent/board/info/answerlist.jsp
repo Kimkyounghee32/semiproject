@@ -7,7 +7,13 @@
     pageEncoding="UTF-8"%>
  <data>
 <%
+	/*프로젝트의 경로  */
+	 String root=request.getContextPath();
+%>
+ 
+<%
 	String num=request.getParameter("num");
+	String myid=(String)session.getAttribute("mid");	
 	InfoAnswerDao adao=new InfoAnswerDao();
 	List<InfoAnswerDto> list=adao.getboardanswerList(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");

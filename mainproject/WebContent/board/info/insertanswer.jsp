@@ -19,6 +19,6 @@
 	dto.setNum(Integer.parseInt(num)); //num은 dto에서 int로 선언해줬으니까 인티져파스인트사용
 	dto.setContent(content);
 	
-	dao.insertboardanswer(dto);
+	dao.insertanswer(dto);
 	
 %>
