@@ -11,13 +11,13 @@
 </head>
 <body>
 <%
-	
 	if(session.getAttribute("loginok")=="yes"){
 		String id=(String)session.getAttribute("id");
 	%>
 	<b><%=id %>님</b>
+	<script type="text/javascript">console.log("tq?");</script>
 	<b class="loginjsp" onclick="location.href='login/mypage.jsp'">마이페이지</b> 
-	<b class="loginjsp" onclick="logout()">로그아웃</b> 
+	<b class="loginjsp" onclick="location.href='login/logout.jsp'">로그아웃</b> 
 
 <%	}
 	else{%>
@@ -27,16 +27,4 @@
 		
 <%} %>	
 </body>
-<script type="text/javascript">
-	function logout(){
-		<%
- 		session.removeAttribute("id");
- 		session.removeAttribute("loginok");
-		%>
-		console.log("시발");
-		location.href="/mainproject/main.jsp";
-	}
-
-
-</script>
 </html>
