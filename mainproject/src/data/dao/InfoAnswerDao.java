@@ -14,7 +14,7 @@ public class InfoAnswerDao {
 
 DbConnect db=new DbConnect();
 	
-	public void insertboardanswer(InfoAnswerDto dto)
+	public void insertanswer(InfoAnswerDto dto)
 	//게시글에 달린 글이기 때문에 넘버로 받아와야한다
 	//sql문 물음표3개
 	{
@@ -24,7 +24,7 @@ DbConnect db=new DbConnect();
 		conn=db.getConnection();
 		
 		
-		String sql="insert into boardanswer values (seq_mini.nextval,?,?,?,sysdate)";	
+		String sql="insert into infoboardanswer values (seq_mini.nextval,?,?,?,sysdate)";	
 		 try {
 	         pstmt=conn.prepareStatement(sql);
 	         //바인딩
@@ -52,7 +52,7 @@ DbConnect db=new DbConnect();
 	      
 	      conn=db.getConnection();
 	      
-	      String sql="select *from boardanswer where num=? order by idx desc ";	
+	      String sql="select *from infoboardanswer where num=? order by idx desc ";	
 	      int n=0;
 	      try {
 				pstmt=conn.prepareStatement(sql);
@@ -92,7 +92,7 @@ DbConnect db=new DbConnect();
 		
 		conn=db.getConnection();
 		
-		String sql="select * from boardanswer where idx=?";
+		String sql="select * from infoboardanswer where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ DbConnect db=new DbConnect();
 				
 				 Connection conn=null;
 		         PreparedStatement pstmt=null;
-		         String sql="update boardanswer set content=? where idx=?";
+		         String sql="update infoboardanswer set content=? where idx=?";
 		         conn=db.getConnection();
 		         try {
 		            pstmt=conn.prepareStatement(sql);
@@ -145,7 +145,7 @@ DbConnect db=new DbConnect();
 			{
 				Connection conn=null;
 				PreparedStatement pstmt=null;
-				String sql="delete from boardanswer where idx=?";
+				String sql="delete from infoboardanswer where idx=?";
 				conn=db.getConnection();
 		        try {
 		           pstmt=conn.prepareStatement(sql);

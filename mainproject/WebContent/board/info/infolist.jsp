@@ -1,3 +1,4 @@
+<%@page import="data.dao.logindao"%>
 <%@page import="data.dao.InfoAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.InfoBoardDto"%>
@@ -124,7 +125,7 @@ span.glyphicon-chevron-left{
 				</tr>
 				<%}else{
 					//게시판 테이블 출력
-					SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+					SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd");
 					//댓글 dao
 					InfoAnswerDao adao=new InfoAnswerDao();
 					for(InfoBoardDto dto:list)
@@ -136,7 +137,7 @@ span.glyphicon-chevron-left{
 					%>
 						<tr align="center"></tr>
 							<td><%=no--%></td>
-							<td align="left">
+							<td align="left" style="width:800px;">
 								<%
 									//key 는 조회수 증가를 목록에서 클릭한 경우에만 증가하기 위한 값
 									String path="/mainproject/main.jsp?go=board/info/infocontent.jsp?num="
@@ -166,12 +167,20 @@ span.glyphicon-chevron-left{
 									<%} %>
 									</a>
 							</td>
-							<td>
-								<%=dto.getMyid()%>
+							<td style="width:100px;">
+								<%
+									//id 세션값얻기
+								String loginok=(String)session.getAttribute("loginok");
+								String id=(String)session.getAttribute("id");
+								
+								
+									//String myid=(String)session.getAttribute("mid");
+								%>
+									<%=id%>
 							</td>
-							<td><%=sdf.format(dto.getWriteday()) %></td>
-							<td><%=dto.getLikes()%></td>
-							<td>
+							<td style="width:100px;"><%=sdf.format(dto.getWriteday()) %></td>
+							<td style="width:100px;"><%=dto.getLikes()%></td>
+							<td style="width:100px;">
 							 <!--조회수 글리프아이콘  -->
 							<span class="glyphicon glyphicon-eye-open">
 							<%=dto.getReadcount()%></span>
@@ -181,8 +190,6 @@ span.glyphicon-chevron-left{
 					}
 				%>
 			</table>
-
-
 <!-- 페이징처리 -->	
 <%
 if(totalCount>0){

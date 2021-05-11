@@ -55,7 +55,7 @@ h4{
 			$.ajax({
 				type:"get", //post : 웹브라우저에서 웹서버에 데이타를 전달(전달되는 데이터가 보이지 않는다)
 				dataType:"xml", //dataType : 서버가 리턴하는 데이터 타입 (xml, json, script, html)
-				url:"info/board/answerlist.jsp", //url : 데이터를 전송할 URL
+				url:"mainproject/board/info/answerlist.jsp", //url : 데이터를 전송할 URL
 				data:{"num":num}, //data : 서버에 전송할 데이터, key/value 형식의 객체
 				success:function(data){ //success : ajax통신에 성공했을 때 호출될 이벤트 핸들러
 					var su=$(data).find("answer").length;
@@ -112,7 +112,7 @@ h4{
 			$.ajax({
 				type:"post", //post : 웹브라우저에서 웹서버에 데이타를 전달(전달되는 데이터가 보이지 않는다)
 				dataType:"html", //dataType : 서버가 리턴하는 데이터 타입 (xml, json, script, html)
-				url:"info/board/insertanswer.jsp", //url : 데이터를 전송할 URL
+				url:"mainproject/board/info/insertanswer.jsp", //url : 데이터를 전송할 URL
 				data:{"num":num,"myid":myid,"content":acontent}, //data : 서버에 전송할 데이터, key/value 형식의 객체
 				success:function(d){ //success : ajax통신에 성공했을 때 호출될 이벤트 핸들러
 					//목록 다시 출력 
@@ -130,7 +130,7 @@ h4{
 			 $.ajax({
 				type:"get",
 				dataType: "html",
-				url:"info/board/answerdelete.jsp",
+				url:"board/info/answerdelete.jsp",
 				data:{"idx":idx},
 				success:function(d){
 					//현재페이지 새로고침
@@ -173,7 +173,7 @@ h4{
 				}
 			});		
 		});
-	})
+	});
 	
 </script>
 </head>
