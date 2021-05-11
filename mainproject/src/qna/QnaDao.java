@@ -27,7 +27,6 @@ public class QnaDao {
 			while(rs.next()) {
 				QnaDto dto=new QnaDto();
 				dto.setNum(rs.getString("num"));
-				System.out.println(dto.getNum());
 				dto.setCategory(rs.getString("category"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
@@ -41,5 +40,37 @@ public class QnaDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 		return list;
+	}
+	
+	public List<QnaDto> getSearchData(String subject)
+	{
+		List<QnaDto> list=new Vector<QnaDto>();
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from faq where subject like '%"
+				+subject+"%' order by num desc";
+		System.out.println();
+		conn=db.getConnection();
+		try {
+			QnaDto dto=new QnaDto();
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				dto.setNum(rs.getString("num"));
+				dto.setCategory(rs.getString("category"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				
+				list.add(dto);
+			}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("getSearchData����"+e.getMessage());
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+	}return list;
 	}
 }
