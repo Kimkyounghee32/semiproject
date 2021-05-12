@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="faq/faq.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <script type="text/javascript">
@@ -24,6 +23,7 @@ $(function(){
 });	
 
 $(document).on("click","#btnSearch",function(){
+	
 	 $("div.qnaa").hide();
 	 $("div.btn").show();
 	list();
@@ -36,7 +36,7 @@ function list()
 
      $.ajax({
     	type:"get",
-    	url:"faq/faqsearch.jsp",
+    	url:"/mainproject/faq/faqsearch.jsp",
     	dataType : "xml",
         data : {"subject":subject},
         success:function(data){
@@ -47,7 +47,7 @@ function list()
      	
 	   var n=$(data).find("board").length;
 	   var m=subject.length;
-	   console.log(n);
+
         if(n==0){
             alert("해당 질문이 없습니다.");
             history.go();
@@ -86,11 +86,13 @@ function list()
 </script>
 <body>
 <div class="form">
+<div class="question">
 <b id="title">자주 하는 질문</b><br><br>
 <input type="text" class="flow search-text" id="searchText" title="검색어 입력">
 <button type="button" class="flow btn-search" id="btnSearch">
 <span class="glyphicon glyphicon-search search"></span>
 </button>
+</div>
 <br>
 <br>
 <div class="qnaa">
@@ -120,7 +122,7 @@ for(QnaDto dto:list)
 </div>
 <div class="list"></div>
 <div class="btn">
-<button class="btn btn-info btn-lg" onclick="location.href='faq/faq.jsp'">목록</button>
+<button class="btn btn-info btn-lg listbtn" onclick="location.href='main.jsp?go=faq/faq.jsp'">목록</button>
 </div>
 </body>
 </html>

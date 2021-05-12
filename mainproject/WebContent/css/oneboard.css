@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+div.list{
+	margin-top: 10px;
+    margin-left: 300px;
+    margin-bottom: 400px;
+}
+
+.writebtn{
+	margin-top: 30px;
+	margin-left: 1100px;
+    width: 100px;
+}

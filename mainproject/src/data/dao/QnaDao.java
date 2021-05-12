@@ -55,7 +55,6 @@ public class QnaDao {
 		conn=db.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				QnaDto dto=new QnaDto();
@@ -64,6 +63,7 @@ public class QnaDao {
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				
+				list.add(dto);
 			}
 	
 		} catch (SQLException e) {

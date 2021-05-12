@@ -14,7 +14,7 @@ div.form{
 	margin-top: 50px;
     margin-left: 650px;
     font-family: 'Noto Sans KR';
-    height: 1300px;
+    
 }
 
 #title{
@@ -36,6 +36,7 @@ div.qnaa{
 	font-family: 'Noto Sans KR';
 	font-size: 1.5em;
 	margin-left: -60px;
+	height: 1300px;
 }
 
 a.qnatag:hover{
@@ -67,7 +68,7 @@ b.asearch{
 }
 
 .dsearch{
-	margin-left: 450px;
+	margin-left: 650px;
 	font-size: 1.5em;
 	border : #4B89DC solid 3px;
 	border-radius: 20px;
@@ -78,8 +79,7 @@ b.asearch{
 }
 
 div.btn{
-	margin-left: 450px;
-	
+	margin-left: 650px;
 }
 #btnSearch{
 	border: none;
@@ -89,4 +89,18 @@ span.search{
 	font-size: 2em;
     color: #2E64FE;
     
+}
+
+div.btn{
+	margin-top: 30px;
+	margin-bottom: 200px;
+	
+}
+
+button.btn-info{
+	background-color: #2E64FE;
+    border-color: #2E64FE;
+	width: 150px;
+    height: 40px;
+	
 }

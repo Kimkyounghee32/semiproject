@@ -6,15 +6,12 @@
     pageEncoding="UTF-8"%>
 <list>
 <%
-
    //dao선언
-  	QnaDao dao=new QnaDao();
+  QnaDao dao=new QnaDao();
    //목록 가져오기
-    String subject=request.getParameter("subject");
+  String subject=request.getParameter("subject");
    
-   //List<AjaxBoardDto> list=dao.getAllDatas();
-   List<QnaDto> list=dao.getSearchData(subject);
-
+  List<QnaDto> list=dao.getSearchData(subject);
    for(QnaDto dto:list){
       %>
       <board>

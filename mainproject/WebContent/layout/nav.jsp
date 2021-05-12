@@ -32,7 +32,7 @@
 						<div>
 							<ul class="Support">
 								<li><a href="main.jsp?go=faq/faq.jsp">자주하는 질문</a></li>
-								<li><a href="main.jsp?go=gallery/">1:1문의</a></li>
+								<li><a href="main.jsp?go=oneboard/oneboardlist.jsp">1:1문의</a></li>
 							</ul>
 						</div></li>
 				</ul>
