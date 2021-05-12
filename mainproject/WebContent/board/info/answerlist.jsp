@@ -13,7 +13,7 @@
  
 <%
 	String num=request.getParameter("num");
-	String myid=(String)session.getAttribute("myid");	
+	String id=(String)session.getAttribute("id");	
 	InfoAnswerDao dao=new InfoAnswerDao();
 	List<InfoAnswerDto> list=dao.getinfoanswerList(num);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");

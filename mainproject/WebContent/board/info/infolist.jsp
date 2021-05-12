@@ -14,15 +14,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
-h3 {
-  display: block;
-  font-size: 2em;
-  margin-top: 5em;
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
+
+caption>h4 {
+  display: flex;
+  font-size: 20pt;
   margin-bottom: 1em;
-  margin-left: 60px;
-  margin-right: 0;
   font-weight: bold;
-  color: #333333;
+  font-family: Noto Sans KR;
+  font-size : 20pt;
+  font-weight: bold;
+  color: #4B89DC;
 }
 
 .table {
@@ -41,6 +43,8 @@ span.glyphicon-chevron-left{
     max-width: 660px;  /* 넓이값은 자식요소들의 넓이합과 같아야지 정 가운데로 맞출 수 있습니다.*/
     margin:0 auto;  /* div 하나일때 가운데 정렬*/
 }
+
+
 </style>
 </head>
 
@@ -101,13 +105,11 @@ span.glyphicon-chevron-left{
 %>
 <body>
 
-<h3>정보공유게시판</h3>
-<br>
-
 <!-- 게시판 메인 페이지 영역 시작 -->
 <div class="boardlist">
 	<div class="row">
 		<table class="table table-striped" style=" width:1200px; text-align: center; border: 1px solid #dddddd">
+		<caption><h4>정보공유게시판</h4></caption>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;" width="60">번호</th>
 					<th style="background-color: #eeeeee; text-align: center;" width="320">제목</th>
@@ -131,7 +133,7 @@ span.glyphicon-chevron-left{
 					for(InfoBoardDto dto:list)
 					{
 						//각 글의 댓글 갯수를 acount에 넣어둔다
-						int acount=adao.getboardanswerList(String.valueOf(dto.getNum())).size();
+						int acount=adao.getinfoanswerList(String.valueOf(dto.getNum())).size();
 						//String.valueOf() = 괄호안에 있는 모든 타입을 스트링으로 바꿔준다.
 						
 					%>

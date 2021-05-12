@@ -7,33 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>semi_infocontent</title>
+<link rel="stylesheet" href="/mainproject/css/infoBoard.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<style type="text/css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-table{
-	padding-top: 70px;
-	margin-left : 15%;
-	margin-right : 15%;
-	padding-bottom: 30px;
-}
-
-h4{
-	font-family: Noto Sans KR;
-	font-size : 23pt;
-	font-weight: bold;
-}
-
-div.reple{
-	display: flex;
-	justify-content: center;
-	width: 750px; 
-	text-align: left;
-	
-}
-
-</style>
 <body>
 <%
 	 //프로젝트의 경로
@@ -74,9 +53,10 @@ div.reple{
 						var writeday=n.find("writeday").text();
 						
 						s+="<div class='reple'>";
-						s+=myid+writeday;
+						s+=myid+"<span class='repleA'>"+"&nbsp";
+						s+=writeday+"<span class='repleB'>"+"&nbsp"+"&nbsp"+"&nbsp"+"<br>";
 						s+=content;
-						//s+=<"br">;
+
 						var login="<%=loginok%>";
 						console.log(login);
 						//댓글도 로그인 상태에만 본인이 쓴 댓글에 한해서
@@ -87,10 +67,11 @@ div.reple{
 						console.log(logid);
 						
 						if(login=='yes'&& logid==myid){ //로그인한아이디가 글쓴사람아이디와 같으면
-							s+="<span class='amod glyphicon glyphicon-pencil' idx="+idx+"></span>";
-							s+="<span class='adel glyphicon glyphicon-remove' idx="+idx+"></span>";
+							s+="<span class='amod glyphicon glyphicon-edit' idx="+idx+"></span>";
+							s+="<span class='adel glyphicon glyphicon-trash' idx="+idx+"></span>";
+							s+="<hr>";
 						}
-						s+="</span><br>";
+						s+="</span>";
 						s+="</div>";
 							$("div.alist").html(s);
 					})
@@ -176,11 +157,11 @@ div.reple{
 		$(document).on("click", "#btnreplemod", function(){
 			var data=$("#replemod").val();
 			var idx=a;
-			//console.log(data);
+			console.log(data);
 			$.ajax({
 				type:"post",
 				dataType:"html",
-				url:"/mainproject/info/board/answerupdateaction.jsp",
+				url:"/mainproject/board/info/answerupdateaction.jsp",
 				data:{"content":data,"idx":idx},
 				error : function(){ 
 					alert('통신실패!!');
@@ -192,6 +173,24 @@ div.reple{
 		});
 	});
 	
+</script>
+<!-- 게시판 수정 삭제 기능  -->		
+<script type="text/javascript">
+	//삭제버튼이벤트
+	$("#boarddel").click(function () {
+		var num=$(this).attr("num");
+		alert(num);
+		$.ajax({
+			type:"get",
+			dataType: "html",
+			url:"board/info/infoboarddelete.jsp",
+			data:{"num":num},
+			success:function(d){
+				
+			}
+		})
+		
+	})
 </script>
 </head>
 <body>
@@ -225,10 +224,13 @@ div.reple{
 			<b style="font-size: 12pt;">제목&nbsp;<%=dto.getSubject()%></b></td>
 	</tr>
 	<tr>
-		<td>작성자&nbsp;<%=dto.getMyid()%></td>
+		<td><span class="title">작성자</span>&nbsp;<%=dto.getMyid()%></td>
 		<td>작성일&nbsp;<%=dto.getWriteday() %></td>
 		<td>조회&nbsp;<%=dto.getReadcount() %></td>
-		<td>추천&nbsp;<%=dto.getLikes() %></td>
+		<td><span class="likes">추천</span>
+			<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<%=dto.getLikes() %>
+			<span class="likesu"></span>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="4">
@@ -264,42 +266,41 @@ div.reple{
 			onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp?pageNum=<%=pageNum%>'">목록</button>
 			
 			
+		<!-- 글목록 수정삭제 부분 -->
+		
 		<%
-				String mod="mainproject/main.jsp?go=board/info/infoupdateform.jsp?num="
+				String mod="main.jsp?go=board/info/infoupdateform.jsp?num="
 					+dto.getNum()+"&pageNum="+pageNum;
 				String del="board/info/infoboarddelete.jsp?num="
 					+dto.getNum()+"&pageNum="+pageNum; 
 				//delete는 경로에서 메인을 통할 필요가 없음. 보여줄게 없기 때문에->바로 삭제할 예정.
 			%>
 			
-			<%
+		<%
 				//세션에서 로그인한 아이디를 얻는다
-				String myid=(String)session.getAttribute("mid");
+				String id=(String)session.getAttribute("id");
 				
 				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
-				{
-					
+				if(id!=null && loginok!=null)
+				{		
 			%>
-		
-				<!-- 글목록 수정삭제 -->
-				<button type="button" class="btn btn btn-primary btn-xs"
+		<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
 					onclick="location.href='<%=mod%>'" idx="">수정</button>
 					
 				<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
 					id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button>	
-			
 		<%} %>
-
+</td>
 </table>
 	<br>
 	
 		<input type="hidden" name="myid" id="myid" value="<%=mid%>">
 		<input type="hidden" name="num" id="num" value="<%=num%>">
 		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
+		<br>
 		
 		<%
 		//댓글 입력창은 로그인한 상태에서만 보이도록한다(입력창만! 댓글 목록은 로그아웃상태에서도 보임)
@@ -308,41 +309,23 @@ div.reple{
 			
 		<div style="margin-left: 250px;" class="form-inline" id="add">
 		
-			<input type="text" class="form-control" style="width: 700px;"
+			<input type="text" class="form-control" style="width: 900px;"
 				id="replewrite" placeholder="댓글을 입력해주세요">
 			<button type="button" class="btn btn-primary btn-xs"
 			id="btnrepleconfirm" style="float:500px; height: 30px;">확인</button>
 		</div>
 			
 		<div style="margin-left: 250px;" class="form-inline" id="up">
-			<input type="text" class="form-control" style="width: 700px;"
+			<input type="text" class="form-control" style="width: 900px;"
 				id="replemod" placeholder="수정할 댓글을 입력해주세요">
 			<button type="button" class="btn btn-primary btn-xs"
 			id="btnreplemod">수정</button>
 			</div>
+		<br>
 		<%}
 		%>
 			
 <div class="alist"></div>
-
-		
-<script type="text/javascript">
-	//삭제버튼이벤트
-	$("#boarddel").click(function () {
-		var num=$(this).attr("num");
-		alert(num);
-		$.ajax({
-			type:"get",
-			dataType: "html",
-			url:"board/info/infoboarddelete.jsp",
-			data:{"num":num},
-			success:function(d){
-				
-			}
-		})
-		
-	})
-</script>
 
 </body>
 </html>

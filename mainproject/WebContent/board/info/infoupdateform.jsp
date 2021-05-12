@@ -72,7 +72,7 @@ charset="utf-8"></script>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
-			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jps'">목록</button>
+			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp'">목록</button>
 		<button type="submit" class="btn btn-sm btn-primary" id="btnSave"
 			style="width: 100px; float:right;">수정완료</button>
 		</div>

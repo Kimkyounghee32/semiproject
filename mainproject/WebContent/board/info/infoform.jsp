@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../css/board.css">
+<title>infoform</title>
+<link rel="stylesheet" href="/mainproject/css/board.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
@@ -28,8 +28,18 @@ h3{
 <%
 	 //프로젝트의 경로
 	 String root=request.getContextPath();
+%>
+<% 
 
-	//답글일 경우 num읽기
+	String loginok=(String)session.getAttribute("loginok");
+	if(loginok==null)
+	{%>
+		<script type="text/javascript">
+			alert("글을 쓰려면 먼저 로그인을 해주세요");
+			history.back();
+		</script>
+	<%}else{
+	//답글일 경우 4가지읽기
 	String num=request.getParameter("num");
 	String reg=request.getParameter("reg");
 	String restep=request.getParameter("restep");
@@ -61,13 +71,27 @@ charset="utf-8"></script>
 	<input type="hidden" name="restep" value="<%=restep %>">
 	<input type="hidden" name="relevel" value="<%=relevel %>">
 	<input type="hidden" name="pageNum" value="<%=pageNum %>">
-		<br>
-		<b><%=num.equals("0")?"글쓰기":"답글쓰기"%></b>
+		
+		<%
+		//id 세션값얻기
+		String id=(String)session.getAttribute("id");
+		%>
+		
+		<%-- <b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b> --%>
+		
+		<div class="mb-3">
+		 	<label for="writer">작성자</label>
+		 	<input type="text" name="myid" class="form-control" 
+		 		readonly="readonly" style="width: 120px;" value="<%=id%>">
+		 <br>
+		</div>
 		<div class="mb-3">
 			<label for="subject">제목</label>
-			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" autofocus/>
+			<input type="text" class="form-control" name="subject" id="subject" 
+			placeholder="제목을 입력해 주세요" autofocus/>
 			<br>
-			<p style="background-color: #ccccc">※ 저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다. </p>
+			<p style="background-color: #ccccc">
+			※ 저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련법률에 의해 제재를 받으실 수 있습니다. </p>
 		</div>
 		<br>
 		<div class="mb-3">
@@ -77,11 +101,14 @@ charset="utf-8"></script>
 		</div>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
-			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp'">목록</button>
+			style="width: 100px; float:right; margin-left: 10px;" 
+			onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp'">목록</button>
 		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
 			style="width: 100px; float:right;" onclick="submitContents(this)">작성완료</button>
 		</div>
 	</form>
+	<%}	
+%>		
 </div>
 <!-- 스마트게시판에 대한 코드넣기 -->
 <script type="text/javascript">
