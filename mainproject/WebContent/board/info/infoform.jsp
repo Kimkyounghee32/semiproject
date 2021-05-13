@@ -58,7 +58,7 @@ span.title{
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
-<script type="text/javascript" src="<%=root %>/se2/js/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
+<script type="text/javascript" src="<%=root %>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
 charset="utf-8"></script>
 
 </head>

@@ -249,7 +249,7 @@ public class InfoBoardDao {
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("updatelikes에러"+e.getMessage());
 			}finally {
 				db.dbClose(pstmt, conn);
 			}
@@ -305,8 +305,7 @@ public class InfoBoardDao {
 		{	
 			Connection conn=null;
 			PreparedStatement pstmt=null;
-			String sql="update infoboard set subject=?, content=? "
-					+ "where num=?";
+			String sql="update infoboard set subject=?, content=? where num=?";
 			
 			conn=db.getConnection();
 			
@@ -316,11 +315,14 @@ public class InfoBoardDao {
 				pstmt.setString(1, subject);
 				pstmt.setString(2, content);
 				pstmt.setString(3, num);
+				
+				System.out.println(subject);
+				System.out.println(content);
 				//실행
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("update에러"+e.getMessage());
 			}finally {
 				db.dbClose(pstmt, conn);
 			}

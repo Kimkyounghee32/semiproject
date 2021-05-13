@@ -7,8 +7,11 @@
 <meta charset="UTF-8">
 <title>jayuform</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
+
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
 
 body {
@@ -59,14 +62,14 @@ span.title{
 <!-- se2폴더에서 js파일 가져오기  -->
 <script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
-<script type="text/javascript" src="<%=root %>/se2/js/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
+<script type="text/javascript" src="<%=root %>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
 charset="utf-8"></script>
 
 </head>
 <body>
 <div class="container" role="main">
 	<span class="title">자유게시글 작성</span>
-	<form action="board/info/insertaction.jsp" method="post">
+	<form action="board/jayu/insertaction.jsp" method="post">
 	<input type="hidden" name="num" value="<%=num%>">
 	<input type="hidden" name="pagenum" value="<%=pageNum%>">
 	<input type="hidden" name="restep" value="<%=restep %>">
@@ -139,6 +142,7 @@ function submitContents(elClickedObj) {
 
     // document.getElementById("textAreaContent").value를 이용해서 처리한다.
     try {
+    	console.log("test");
         elClickedObj.form.submit();
     } catch(e) { 
     }

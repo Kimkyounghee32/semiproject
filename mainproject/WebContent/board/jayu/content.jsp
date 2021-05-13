@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	span.glyphicon-thumbs-up{
+		cursor: pointer;
+		color: #3F97FA;
+	}
+</style>
 
 <body>
 <%
@@ -54,7 +60,7 @@
 						
 						s+="<div class='reple'>";
 						s+=myid+"<span class='repleA'>"+"&nbsp";
-						s+=writeday+"<span class='repleB'>"+"&nbsp"+"&nbsp"+"&nbsp";
+						s+=writeday+"<span class='repleB'>"+"&nbsp"+"&nbsp"+"&nbsp"+"<br>";
 						s+=content;
 
 						var login="<%=loginok%>";
@@ -69,8 +75,9 @@
 						if(login=='yes'&& logid==myid){ //로그인한아이디가 글쓴사람아이디와 같으면
 							s+="<span class='amod glyphicon glyphicon-edit' idx="+idx+"></span>";
 							s+="<span class='adel glyphicon glyphicon-trash' idx="+idx+"></span>";
+							s+="<hr>";		
 						}
-						s+="</span><br>";
+						s+="</span>";
 						s+="</div>";
 							$("div.alist").html(s);
 					})
@@ -142,9 +149,6 @@
 				url:"/mainproject/board/jayu/answerupdateaction.jsp",
 				dataType:"xml",
 				data:{"idx":idx},
-				error : function(e){ 
-					alert(e.responseText);
-		 		},	
 				success:function(data){
 					var content=$(data).find("content").text();
 					//수정폼태그안에 넣어준다
@@ -173,9 +177,9 @@
 	});
 	
 </script>
-<!-- 게시판 수정 삭제 기능  -->		
+
 <script type="text/javascript">
-	//삭제버튼이벤트
+	//게시판 글 삭제버튼 이벤트
 	$("#boarddel").click(function () {
 		var num=$(this).attr("num");
 		alert(num);
@@ -190,6 +194,24 @@
 		})
 		
 	})
+	
+	
+	//좋아요 이벤트
+	$(document).on("click", "span.glyphicon-thumbs-up", function(){
+		var num=$(this).attr("num");
+		console.log(num);
+		$.ajax({
+			type:"get",
+			dataType:"xml",
+			url:"/mainproject/board/jayu/jayulikes.jsp",
+			data:{"num":num},
+			success:function(data){
+				console.log("test");
+				$("span.likes span.likesu").text($(data).text());
+				location.reload();
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -220,14 +242,17 @@
 	<caption><h4>자유게시글 상세</h4></caption>
 	<tr>
 		<td colspan="4">
-			<b style="font-size: 12pt;">제목&nbsp;<%=dto.getSubject()%></b></td>
+			<b style="font-size: 12pt;">제목&nbsp;
+			<%=dto.getSubject()==null?"제목없음":dto.getSubject()%></b></td>
 	</tr>
 	<tr>
 		<td><span class="title">작성자</span>&nbsp;<%=dto.getMyid()%></td>
 		<td>작성일&nbsp;<%=dto.getWriteday() %></td>
-		<td>조회&nbsp;<%=dto.getReadcount() %></td>
+		<td><span>조회&nbsp;</span>
+			<span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<%=dto.getReadcount() %>
+		</td>
 		<td><span class="likes">추천</span>
-			<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<%=dto.getLikes() %>
+			<span class="glyphicon glyphicon-thumbs-up" num=<%=dto.getNum()%>>&nbsp;</span><%=dto.getLikes() %>
 			<span class="likesu"></span>
 		</td>
 	</tr>
@@ -277,11 +302,11 @@
 			
 		<%
 				//세션에서 로그인한 아이디를 얻는다
-				String id=(String)session.getAttribute("id");
+				String myid=(String)session.getAttribute("id");
 				
 				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-				if(id!=null && loginok!=null)
+				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
 				{		
 			%>
 		
@@ -297,7 +322,7 @@
 </table>
 	<br>
 	
-		<input type="hidden" name="myid" id="myid" value="<%=mid%>">
+		<input type="hidden" name="myid" id="myid" value="<%=myid%>" num="">
 		<input type="hidden" name="num" id="num" value="<%=num%>">
 		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
 		

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
+System.out.println("action");
 %>
 
 <jsp:useBean id="dao" class="data.dao.jayuBoardDao"></jsp:useBean>

@@ -229,14 +229,15 @@
 	//System.out.println(sdf);
 	
 	//작성자 id 얻어오기
-	/* String id=dto.getMyid(); */
+	String mid=dto.getMyid();
 	
 %>
 <table class="table table-bordered" style="width: 1000px; border-color: white;">
 	<caption><h4>정보게시글 상세</h4></caption>
 	<tr>
 		<td colspan="4">
-			<b style="font-size: 12pt;">제목&nbsp;<%=dto.getSubject()%></b></td>
+			<b style="font-size: 12pt;">제목&nbsp;
+			<%=dto.getSubject()==null?"제목없음":dto.getSubject()%></b></td>
 	</tr>
 	<tr>
 		<td><span class="title">작성자</span>&nbsp;<%=dto.getMyid()%></td>
@@ -295,11 +296,11 @@
 			
 		<%
 				//세션에서 로그인한 아이디를 얻는다
-				String id=(String)session.getAttribute("id");
+				String myid=(String)session.getAttribute("id");
 				
 				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-				if(id!=null && loginok!=null)
+				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
 				{		
 			%>
 		<button type="button" class="btn btn btn-primary btn-xs"
@@ -314,7 +315,7 @@
 </table>
 	<br>
 	
-		<input type="hidden" name="myid" id="myid" value="<%=id%>">
+		<input type="hidden" name="myid" id="myid" value="<%=myid%>" num="">
 		<input type="hidden" name="num" id="num" value="<%=num%>">
 		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
 		<br>

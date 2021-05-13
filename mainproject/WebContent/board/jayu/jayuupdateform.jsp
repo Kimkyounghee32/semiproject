@@ -55,17 +55,17 @@ div.update{
 %>
 
 
-<!-- se2폴더에서 js파일 가져오기  -->
-<script type="text/javascript" src="<%=root %>/se2/js/HuskyEZCreator.js" 
+<!-- se3폴더에서 js파일 가져오기  -->
+<script type="text/javascript" src="<%=root %>/se3/js/HuskyEZCreator.js" 
 charset="utf-8"></script>
-<script type="text/javascript" src="<%=root %>/se2/js/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
+<script type="text/javascript" src="<%=root %>/se3/js/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" 
 charset="utf-8"></script>
 
 
 <div class="update">
 	<span class="title">자유게시글 수정</span>
 	
-	<form action="board/info/infoupdateaction.jsp" method="post">
+	<form action="board/jayu/jayuupdateaction.jsp" method="post">
 	
 	<!-- hidden  -->
 		<input type="hidden" name="num" value="<%=num%>">
@@ -85,8 +85,8 @@ charset="utf-8"></script>
 		<div>
 		<button type="button" class="btn btn-sm btn-primary" id="btnList"
 			style="width: 100px; float:right; margin-left: 10px;" onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayulist.jsp'">목록</button>
-		<button type="submit" class="btn btn-sm btn-primary" id="btnSave"
-			style="width: 100px; float:right;">수정완료</button>
+		<button type="button" class="btn btn-sm btn-primary" id="btnSave"
+			style="width: 100px; float:right;" onclick="submitContents(this)">수정완료</button>
 		</div>
 	</form>
 </div>
@@ -102,7 +102,7 @@ nhn.husky.EZCreator.createInIFrame({
 
     elPlaceHolder: "content",
 
-    sSkinURI: "<%=request.getContextPath()%>/se2/SmartEditor2Skin.html", /* se2에 들어있는 html에 연결해주는 부분 */
+    sSkinURI: "<%=request.getContextPath()%>/se3/SmartEditor2Skin.html", /* se3에 들어있는 html에 연결해주는 부분 */
 
     fCreator: "createSEditor2"
 

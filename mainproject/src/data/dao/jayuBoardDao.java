@@ -14,6 +14,7 @@ public class jayuBoardDao {
 	
 	public void insertjayu(jayuBoardDto dto)
 	{
+		System.out.println(dto.getNum());
 		//dto에 들어있는 4개의 값을 일단 변수에 저장
 		int num=dto.getNum();
 		int reg=dto.getReg();
@@ -60,6 +61,7 @@ public class jayuBoardDao {
 			pstmt.setInt(4, reg);
 			pstmt.setInt(5, restep);
 			pstmt.setInt(6, relevel);
+			System.out.println(100);
 			//실행
 			pstmt.execute();
 			
@@ -249,7 +251,7 @@ public class jayuBoardDao {
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("updatelikes에러:"+e.getMessage());
 			}finally {
 				db.dbClose(pstmt, conn);
 			}
@@ -282,16 +284,16 @@ public class jayuBoardDao {
 					dto.setMyid(rs.getString("Myid"));
 					dto.setSubject(rs.getString("subject"));
 					dto.setContent(rs.getString("content"));
-					dto.setLikes(rs.getInt("likes"));
 					dto.setReg(rs.getInt("reg"));
 					dto.setRestep(rs.getInt("restep"));
 					dto.setRelevel(rs.getInt("relevel"));
+					dto.setLikes(rs.getInt("likes"));
 					dto.setReadcount(rs.getInt("readcount"));
 					dto.setWriteday(rs.getTimestamp("writeday"));	
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("getdata에러:"+e.getMessage());
 			}finally {
 				db.dbClose(rs, pstmt, conn);
 			}

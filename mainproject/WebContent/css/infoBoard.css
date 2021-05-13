@@ -45,3 +45,10 @@
 		margin-left: 10px;
 		cursor: pointer;
 	}
+	
+	span.glyphicon-thumbs-up{
+		cursor: pointer;
+		color: #3F97FA;
+	}
+	
+	
