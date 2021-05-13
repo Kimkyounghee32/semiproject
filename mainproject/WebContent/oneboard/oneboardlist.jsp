@@ -65,10 +65,9 @@
 	
 %>
 <body>
-<div>
-<button class="writebtn" onclick="location.href='/mainproject/main.jsp?go=oneboard/insertform.jsp'">문의작성</button>
-</div>
+<div class="listform">
 <div class="list">
+<img src="image/one.png" id="oneimg">
 <table class="table table-bordered" style="width: 900px;">
 	<tr bgcolor="#ccc">
 		<th width="60">번호</th>
@@ -88,13 +87,15 @@
 		for(OneBoardDto dto:list)
 		{%>
 		<tr align="center">
+			<td><%=no--%></td>
 		<td align="left">
+		
 				<%
 					//key는 조회수 증가를 목록에서 클릭한 경우에만 증가시키기 위한 값
-					String path="/mainproject/main.jsp?go=oneboard/oneboardlist.jsp?num="
-						+dto.getNum()+"&pageNum="+currentPage;
+					String path="/mainproject/main.jsp?go=oneboard/content.jsp?num="
+						+dto.getNum()+"&pageNum="+currentPage+"&key=list";
 				%>
-					<a href="<%=path%>">
+					<a href="<%=path%>" style="color:black;">
 					<!-- relevel에 따라서 제목 앞에 공백 넣기 -->
 						<%
 						//0은 원글이므로 int i=1
@@ -109,8 +110,8 @@
 							<img src="image/re.png">
 						<%}
 						%>
-						<%=dto.getSubject()==null?"제목없음":dto.getSubject()%>
-
+						<%=dto.getSubject()==null?"제목없음":dto.getSubject()%>&nbsp;
+						<span class="glyphicon glyphicon-lock" style="color: gray"></span>
 					</a>
 				</td>
 				<td>
@@ -119,18 +120,22 @@
 					String loginok=(String)session.getAttribute("loginok");
 					String id=(String)session.getAttribute("id");
 				%>
-				<%=id%>
+				<%=dto.getMyid()%>
 				</td>
-				<td><%=sdf.format(dto.getWriteday()) %></td>
+				<td style="width:100px;"><%=sdf.format(dto.getWriteday()) %></td>
 			</tr>	
 	  <%}
 	}
 	%>
+</table>
+<button class="btn btn-info" id="writebtn"
+onclick="location.href='/mainproject/main.jsp?go=oneboard/insertform.jsp'">문의작성</button>
+</div>
 	<!-- 페이징 처리 -->
 <%
 	if(totalCount>0)
 	{%>
-	<div style="width: 900px; text-align: center;">
+	<div style="width: 900px; text-align: center;" class="paging">
 		<ul class="pagination">
 		<%
 		if(startPage>1){ //startPage가 1일땐 나타낼 필요 x , (startPage-1) : startPage의 전 블럭
@@ -159,8 +164,8 @@
 		</ul>
 	</div>
 	<%}
+
 %>
-</table>
 </div>
 </body>
 </html>

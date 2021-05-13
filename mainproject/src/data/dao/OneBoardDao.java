@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
+import data.dto.InfoBoardDto;
 import data.dto.OneBoardDto;
 import oracle.db.DbConnect;
 
@@ -83,7 +84,7 @@ public class OneBoardDao {
 				restep+=1;
 				relevel+=1;
 			}
-			String sql="insert into oneboard values (seq_mini.nextval," + "?,?,?,?,?,?,0,sysdate)";
+			String sql="insert into oneboard values (seq_mini.nextval," + "?,?,?,?,?,?,sysdate)";
 
 			Connection conn=null;
 			PreparedStatement pstmt=null;
@@ -100,12 +101,11 @@ public class OneBoardDao {
 				pstmt.setInt(5, restep);
 				pstmt.setInt(6, relevel);
 
-
 				//실행
 				pstmt.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("insert에러"+e.getMessage());
 			}finally {
 				db.dbClose(pstmt, conn);
 			}
@@ -177,4 +177,88 @@ public class OneBoardDao {
 			return list;
 		}
 		
+		public OneBoardDto getData(String num) 
+		{
+			OneBoardDto dto=new OneBoardDto();
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			conn=db.getConnection();
+			
+			String sql="select * from oneboard where num=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				//바인딩
+				pstmt.setString(1, num);
+				rs=pstmt.executeQuery();
+				if(rs.next())
+				{
+					dto.setNum(rs.getInt("num"));
+					dto.setMyid(rs.getString("Myid"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setContent(rs.getString("content"));
+					dto.setReg(rs.getInt("reg"));
+					dto.setRestep(rs.getInt("restep"));
+					dto.setRelevel(rs.getInt("relevel"));
+					dto.setWriteday(rs.getTimestamp("writeday"));	
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			return dto;
+			
+		}
+		//수정
+		public void updateBoard(String subject, String content, String num) 
+		{	
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			String sql="update oneboard set subject=?, content=? "
+						+ "where num=?";
+					
+			conn=db.getConnection();
+		
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, subject);
+				pstmt.setString(2, content);
+				pstmt.setString(3, num);
+				//실행
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+					
+		}
+						
+				
+		//삭제
+		public void deleteBoard(String num) 
+		{	
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			conn=db.getConnection();
+			String sql="delete from oneboard where num=?";
+					
+			try {
+					pstmt=conn.prepareStatement(sql);
+					pstmt.setString(1, num);
+					//실행
+					pstmt.execute();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					db.dbClose(pstmt, conn);
+				}
+					
+		}		
 }
