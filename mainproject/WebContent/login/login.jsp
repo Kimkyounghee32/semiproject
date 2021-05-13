@@ -15,7 +15,6 @@
 		String id=(String)session.getAttribute("id");
 	%>
 	<b><%=id %>님</b>
-	<script type="text/javascript">console.log("tq?");</script>
 	<b class="loginjsp" onclick="location.href='login/mypage.jsp'">마이페이지</b> 
 	<b class="loginjsp" onclick="location.href='login/logout.jsp'">로그아웃</b> 
 

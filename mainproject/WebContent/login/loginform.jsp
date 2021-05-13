@@ -18,15 +18,27 @@
 <div class="lgmdiv">
 		<input type="text" class="lgm form-control" name="id" placeholder="아이디를 입력해주세요">
 		<input type="text" class="lgm form-control" name="pwd" placeholder="패스워드를 입력해주세요">
-		<button id="loginac" class="btn btn-success" type="submit">로그인</button>
+		<button id="loginac" class="btn btn-primary" type="submit">로그인</button>
+		<button id="qr" class="btn btn-primary" type="button" onclick="location.href='/mainproject/login/qrform.jsp'">qr코드 로그인</button>
 </div>
 	<div class="lgmdiv">
-		<a href="findID.jsp">아이디 찾기</a> <a href="findPW.jsp">비밀번호 찾기</a> <a href="createuser.jsp">회원가입</a>
+		<a id="findIDwindow">아이디 찾기</a> <a id="findPwwindow">비밀번호 찾기</a> <a href="createuser.jsp">회원가입</a>
 	</div>
 </div>
 </body>
 <script type="text/javascript">
-// 	document.querySelector("sdfsdfsdfsdf").addEventListener("click", function(e) {
+
+$("#findIDwindow").click(function(){
+	window.open("findID.jsp");
+});
+
+$("#findPwwindow").click(function(){
+	console.log("덥다");
+	window.open("findPW.jsp");
+});
+
+
+
 	$("#loginac").click(function(){
 		$.ajax({
 				type:"post",
@@ -45,8 +57,6 @@
 				}		
 			});
 	});
-		
-// 	});			
 
 </script>
 </html>

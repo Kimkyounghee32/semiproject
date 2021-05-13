@@ -22,11 +22,11 @@
 </div>
 
 	<div class="lgmdiv">
-		<input type="text" class="lgmid" name="id" placeholder="아이디를 입력해주세요(필수)">
+		<input type="text" id="createid" class="lgmid" name="id" placeholder="아이디를 입력해주세요(필수)">
 		<button type="button" class="dfkid">중복체크</button>
 		<div id="ida"></div>
 		<input type="text" class="lgm" name="pwd" placeholder="패스워드를 입력해주세요(필수)">
-		<input type="text" class="lgm" name="email" placeholder="이메일을 입력해주세요(선택)">
+		<input type="text" class="lgm" name="email" placeholder="이메일을 입력해주세요(필수)">
 		<select class="lgm" name="hpw">
                                         <option value="233">
                                             가나 +233
@@ -672,18 +672,20 @@
                                         </option>
                         </select>
 		<input type="text" class="lgm" name="hp" placeholder="전화번호를 입력해주세요(필수)">
-		<button class="btn btn-success" type="submit">회원가입</button>
+		<button class="btn btn-primary" type="submit">회원가입</button>
 	</div>
 </div>
 </body>
 <script type="text/javascript">
 $(function(){
 	$("button.dfkid").click(function(){
+		console.log($("#createid").val());
+		
 		$.ajax({
 			type:"post",
-			url:"idcheck.jsp",
+			url:"./idcheck.jsp",
 			dataType:"json",
-			data:{"id": $("input[name='id']").val()},
+			data:{"id": $("#createid").val()},
 			success:function(data){
 				if(data.id==false){
 					$("#ida>a").remove();

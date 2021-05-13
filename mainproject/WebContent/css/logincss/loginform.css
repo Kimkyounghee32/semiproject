@@ -13,7 +13,7 @@ div.lgmdiv {
 	margin-top:30px;
     text-align:center;
 }
-div.lgmdiv>input:not(.lgmid), div.lgmdiv>button.btn-success,div.lgmdiv>select{
+div.lgmdiv>input:not(.lgmid), div.lgmdiv>button.btn-primary,div.lgmdiv>select{
     width: 380px;
     margin: auto;
     margin-top: 30px;
