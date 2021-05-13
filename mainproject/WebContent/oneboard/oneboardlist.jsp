@@ -61,8 +61,9 @@
 	no=totalCount-(currentPage-1)*perPage;
 	
 	//start부터 end까지 게시글 가져오기
-	List<OneBoardDto> list=dao.getList(start, end);
-	
+	String myid=(String)session.getAttribute("id");
+	if(myid==null)myid="null";
+	List<OneBoardDto> list=dao.getList(start, end,myid);
 %>
 <body>
 <div class="listform">
@@ -110,8 +111,7 @@
 							<img src="image/re.png">
 						<%}
 						%>
-						<%=dto.getSubject()==null?"제목없음":dto.getSubject()%>&nbsp;
-						<span class="glyphicon glyphicon-lock" style="color: gray"></span>
+						<%=dto.getSubject()==null?"제목없음":dto.getSubject()%>
 					</a>
 				</td>
 				<td>
