@@ -32,12 +32,12 @@ caption>h4 {
  margin-right: auto;
 }
 
-span.glyphicon-chevron-left{
+/* span.glyphicon-chevron-left{
   margin-top: 0em;
   margin-bottom: 1em;
   margin-left: 600px;
   margin-right: 0;
-}
+} */
 
 .pagenation {
     max-width: 660px;  /* 넓이값은 자식요소들의 넓이합과 같아야지 정 가운데로 맞출 수 있습니다.*/
@@ -182,9 +182,7 @@ span.glyphicon-chevron-left{
 							</td>
 							<td style="width:100px;"><%=sdf.format(dto.getWriteday()) %></td>
 							<td style="width:100px;"><%=dto.getLikes()%></td>
-							<td style="width:100px;">
-							 <!--조회수 글리프아이콘  -->
-							<span class="glyphicon glyphicon-eye-open">
+							<td style="width:100px;"><span class="glyphicon glyphicon-eye-open">
 							<%=dto.getReadcount()%></span>
 							</td>
 						</tr>

@@ -1,13 +1,13 @@
+<%@page import="data.dto.jayuBoardDto"%>
+<%@page import="data.dao.jayuBoardDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.dao.InfoBoardDao"%>
-<%@page import="data.dto.InfoBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>semi_infocontent</title>
+<title>semi_jayucontent</title>
 <link rel="stylesheet" href="/mainproject/css/infoBoard.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -182,7 +182,7 @@
 		$.ajax({
 			type:"get",
 			dataType: "html",
-			url:"board/info/infoboarddelete.jsp",
+			url:"board/jayu/jayuboarddelete.jsp",
 			data:{"num":num},
 			success:function(d){
 				
@@ -200,13 +200,13 @@
 	String pageNum=request.getParameter("pageNum");
 	
 	//key가 널이 아닌 경우 조회수 1증가////목록에서 클릭시에만 조회수 증가
-	InfoBoardDao dao=new InfoBoardDao();
+	jayuBoardDao dao=new jayuBoardDao();
 
 	if(key!=null)
 		dao.updateReadcount(num);
 	
 	//dto
-	InfoBoardDto dto=dao.getData(num);
+	jayuBoardDto dto=dao.getData(num);
 	
 	//날짜타입
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -217,7 +217,7 @@
 	
 %>
 <table class="table table-bordered" style="width: 1000px; border-color: white;">
-	<caption><h4>정보게시글 상세</h4></caption>
+	<caption><h4>자유게시글 상세</h4></caption>
 	<tr>
 		<td colspan="4">
 			<b style="font-size: 12pt;">제목&nbsp;<%=dto.getSubject()%></b></td>
@@ -248,7 +248,7 @@
 	<tr>
 		<td align="right">
 		<button type="button" class="btncontent btn btn-primary btn-xs"
-			onclick="location.href='/mainproject/main.jsp?go=board/info/infoform.jsp'">글쓰기</button>
+			onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayuform.jsp'">글쓰기</button>
 			
 		<%-- <%
 				//널이아니면 읽어들여야하는것들 다 써주자
@@ -262,15 +262,15 @@
 			
 		<button type="button" class="btn btn btn-primary btn-xs"
 			style="width: 60px; margin-left: 2px;"
-			onclick="location.href='/mainproject/main.jsp?go=board/info/infolist.jsp?pageNum=<%=pageNum%>'">목록</button>
+			onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayulist.jsp?pageNum=<%=pageNum%>'">목록</button>
 			
 			
 		<!-- 글목록 수정삭제 부분 -->
 		
 		<%
-				String mod="main.jsp?go=board/info/infoupdateform.jsp?num="
+				String mod="main.jsp?go=board/jayu/jayuupdateform.jsp?num="
 					+dto.getNum()+"&pageNum="+pageNum;
-				String del="board/info/infoboarddelete.jsp?num="
+				String del="board/jayu/jayuboarddelete.jsp?num="
 					+dto.getNum()+"&pageNum="+pageNum; 
 				//delete는 경로에서 메인을 통할 필요가 없음. 보여줄게 없기 때문에->바로 삭제할 예정.
 			%>

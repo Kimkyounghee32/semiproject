@@ -241,10 +241,11 @@
 	<tr>
 		<td><span class="title">작성자</span>&nbsp;<%=dto.getMyid()%></td>
 		<td>작성일&nbsp;<%=dto.getWriteday() %></td>
-		<td>조회&nbsp;<%=dto.getReadcount() %></td>
+		<td><span>조회&nbsp;</span>
+			<span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<%=dto.getReadcount() %>
+		</td>
 		<td><span class="likes">추천</span>
-					<span class="glyphicon glyphicon-thumbs-up" num=<%=dto.getNum()%>>&nbsp;</span>&nbsp;<%=dto.getLikes() %>
-		
+			<span class="glyphicon glyphicon-thumbs-up" num=<%=dto.getNum()%>>&nbsp;</span><%=dto.getLikes() %>
 			<span class="likesu"></span>
 		</td>
 	</tr>

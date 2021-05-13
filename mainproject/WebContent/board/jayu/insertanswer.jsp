@@ -1,5 +1,3 @@
-
-
 <%@page import="data.dto.jayuAnswerDto"%>
 <%@page import="data.dao.jayuAnswerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

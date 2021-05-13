@@ -12,6 +12,7 @@
 <%	
 	//페이지 번호 읽기
 	String pageNum=request.getParameter("pageNum");
+	dto.setMyid((String)session.getAttribute("id"));
 	//db에 insert
 	dao.insertjayu(dto);
 	//게시글 목록페이지로 이동

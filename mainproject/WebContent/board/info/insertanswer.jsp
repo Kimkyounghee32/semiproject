@@ -1,8 +1,6 @@
 
 <%@page import="data.dto.InfoAnswerDto"%>
 <%@page import="data.dao.InfoAnswerDao"%>
-<%@page import="data.dto.InfoBoardDto"%>
-<%@page import="data.dao.InfoBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     

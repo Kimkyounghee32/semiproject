@@ -21,7 +21,7 @@ body {
   padding-bottom: 30px;
 }
 
-div<b{
+span.title{
 	font-family: Noto Sans KR;
 	font-size : 20pt;
 	font-weight: bold;
@@ -63,13 +63,14 @@ charset="utf-8"></script>
 
 
 <div class="update">
-	<b>정보게시글 수정</b>
+	<span class="title">정보게시글 수정</span>
+	<br>
 	<form action="board/info/infoupdateaction.jsp" method="post">
 	
 	<!-- hidden  -->
 		<input type="hidden" name="num" value="<%=num%>">
 		<input type="hidden" name="start" value="<%=start%>">
-		
+		<br>
 		<div class="mb-3">
 			<label for="subject">제목</label>
 			<input type="text" class="form-control" name="subject" id="subject" placeholder="제목을 입력해 주세요" value="<%=dto.getSubject()%>">

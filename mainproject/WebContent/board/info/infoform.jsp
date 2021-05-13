@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>infoform</title>
-<link rel="stylesheet" href="/mainproject/css/board.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
@@ -18,10 +17,11 @@ body {
   padding-bottom: 30px;
 }
 
-h3{
+span.title{
 	font-family: Noto Sans KR;
 	font-size : 23pt;
 	font-weight: bold;
+	color: #4B89DC;
 }
 
 </style>
@@ -64,7 +64,7 @@ charset="utf-8"></script>
 </head>
 <body>
 <div class="container" role="main">
-	<h3>정보게시글 작성</h3>
+	<span class="title">정보게시글 작성</span>
 	<form action="board/info/insertaction.jsp" method="post">
 	<input type="hidden" name="num" value="<%=num%>">
 	<input type="hidden" name="pagenum" value="<%=pageNum%>">
@@ -78,7 +78,7 @@ charset="utf-8"></script>
 		%>
 		
 		<%-- <b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b> --%>
-		
+		<br>
 		<div class="mb-3">
 		 	<label for="writer">작성자</label>
 		 	<input type="text" name="myid" class="form-control" 
