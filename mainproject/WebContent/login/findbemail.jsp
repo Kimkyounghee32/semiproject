@@ -1,4 +1,3 @@
-<%@page import="data.dto.mailserverdto"%>
 <%@page import="data.dao.mailserver"%>
 <%@page import="data.dto.logindto"%>
 <%@page import="data.dao.logindao"%>
