@@ -26,10 +26,11 @@
 
 	//세션에서 로그인한 아이디를 얻는다
 	String id=(String)session.getAttribute("id");
+
 			
 	//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 	//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-	if(loginok!=null && dto.getMyid().equals(id))
+	if(loginok!=null && dto.getMyid().equals(id) || id.equals("admin"))
 	{	
 %>
 <div class="container">
@@ -87,9 +88,6 @@
 					+dto.getNum()+"&pageNum="+pageNum; 
 				//delete는 경로에서 메인을 통할 필요가 없음. 보여줄게 없기 때문에->바로 삭제할 예정.
 			%>
-		<button type="button" class="btn btn btn-primary btn-xs"
-					style="width: 60px; margin-left: 2px;"
-					onclick="location.href='<%=mod%>'" idx="">수정</button>
 					
 				<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
