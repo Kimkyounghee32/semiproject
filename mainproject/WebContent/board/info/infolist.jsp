@@ -226,7 +226,7 @@ if(totalCount>0){
 <%}
 %>
 		<div class="container">
-		<!-- <span class="glyphicon glyphicon-chevron-left" id="pre"></span>
+		<!-- <span class="glyphicon glyphicon-chevron-left" id="pre">
 		<span class="glyphicon glyphicon-chevron-right" id="next"></span> -->
 		<button type="button" class="btn btn btn-primary btn-xs" 
 			style="float: right;  margin-bottom: 50px;"

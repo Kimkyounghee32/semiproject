@@ -143,9 +143,6 @@
 				url:"/mainproject/board/info/answerupdateaction.jsp",
 				dataType:"xml",
 				data:{"idx":idx},
-				error : function(e){ 
-					alert(e.responseText);
-		 		},	
 				success:function(data){
 					var content=$(data).find("content").text();
 					//수정폼태그안에 넣어준다
@@ -173,10 +170,10 @@
 		});
 	});
 	
-</script>
-<!-- 게시판 수정 삭제 기능  -->		
+</script>	
 <script type="text/javascript">
-	//삭제버튼이벤트
+
+	//게시판 글 삭제버튼 이벤트
 	$("#boarddel").click(function () {
 		var num=$(this).attr("num");
 		alert(num);
@@ -185,12 +182,30 @@
 			dataType: "html",
 			url:"board/info/infoboarddelete.jsp",
 			data:{"num":num},
+			
 			success:function(d){
 				
 			}
 		})
 		
 	})
+	
+	//좋아요 이벤트
+	$(document).on("click", "span.glyphicon-thumbs-up", function(){
+		var num=$(this).attr("num");
+		console.log(num);
+		$.ajax({
+			type:"get",
+			dataType:"xml",
+			url:"/mainproject/board/info/infolikes.jsp",
+			data:{"num":num},
+			success:function(data){
+				console.log("test");
+				$("span.likes span.likesu").text($(data).text());
+				location.reload();
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -214,7 +229,7 @@
 	//System.out.println(sdf);
 	
 	//작성자 id 얻어오기
-	String mid=dto.getMyid();
+	/* String id=dto.getMyid(); */
 	
 %>
 <table class="table table-bordered" style="width: 1000px; border-color: white;">
@@ -228,7 +243,8 @@
 		<td>작성일&nbsp;<%=dto.getWriteday() %></td>
 		<td>조회&nbsp;<%=dto.getReadcount() %></td>
 		<td><span class="likes">추천</span>
-			<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<%=dto.getLikes() %>
+					<span class="glyphicon glyphicon-thumbs-up" num=<%=dto.getNum()%>>&nbsp;</span>&nbsp;<%=dto.getLikes() %>
+		
 			<span class="likesu"></span>
 		</td>
 	</tr>
@@ -297,7 +313,7 @@
 </table>
 	<br>
 	
-		<input type="hidden" name="myid" id="myid" value="<%=mid%>">
+		<input type="hidden" name="myid" id="myid" value="<%=id%>">
 		<input type="hidden" name="num" id="num" value="<%=num%>">
 		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
 		<br>

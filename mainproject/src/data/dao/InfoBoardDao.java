@@ -191,10 +191,10 @@ public class InfoBoardDao {
 					dto.setMyid(rs.getString("myid"));
 					dto.setSubject(rs.getString("subject"));
 					dto.setContent(rs.getString("content"));
-					dto.setLikes(rs.getInt("likes"));
 					dto.setReg(rs.getInt("reg"));
 					dto.setRestep(rs.getInt("restep"));
 					dto.setRelevel(rs.getInt("relevel"));
+					dto.setLikes(rs.getInt("likes"));
 					dto.setReadcount(rs.getInt("readcount"));
 					dto.setWriteday(rs.getTimestamp("writeday"));
 					

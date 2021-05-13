@@ -7,10 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/board.css">
+<link rel="stylesheet" href="/mainproject/css/infoBoard.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
+
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
 
 body {
   padding-top: 70px;
@@ -19,11 +21,20 @@ body {
   padding-bottom: 30px;
 }
 
-h3{
+div<b{
 	font-family: Noto Sans KR;
-	font-size : 23pt;
+	font-size : 20pt;
 	font-weight: bold;
+	color: #4B89DC;
 }
+
+div.update{
+	margin-left:180px;
+	width: 1120px;
+	height: 1200px;
+}
+
+
 
 </style>
 <%
@@ -52,7 +63,7 @@ charset="utf-8"></script>
 
 
 <div class="update">
-	<h3>정보게시글 수정</h3>
+	<b>정보게시글 수정</b>
 	<form action="board/info/infoupdateaction.jsp" method="post">
 	
 	<!-- hidden  -->
