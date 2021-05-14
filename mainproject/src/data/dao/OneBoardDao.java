@@ -133,8 +133,7 @@ public class OneBoardDao {
 		return n;
 	}
 
-	// 페이징 처리에 필요한 리스트만 보내기
-	public List<OneBoardDto> getList(int start, int end, String myid) {
+	public List<OneBoardDto> getList(String myid) {
 		List<OneBoardDto> list = new Vector<OneBoardDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -143,16 +142,14 @@ public class OneBoardDao {
 		conn = db.getConnection();
 		// - 출력할 때 그룹의 내림차순 - 같은 그룹일 땐 스텝의 오름차순
 		String sql = "select a.* from (select rownum as rnum,b.* from "
-				+ "(select * from oneboard where myid=? order by reg desc,restep asc)b)a where a.RNUM>=? and a.RNUM<=?";
+				+ "(select * from oneboard where myid=? order by reg desc,restep asc)b)a";
 		if (myid.equals("admin")) {
 			sql = "select a.* from (select rownum as rnum,b.* from "
-					+ "(select * from oneboard order by reg desc,restep asc)b)a where a.RNUM>=? and a.RNUM<=?";
+					+ "(select * from oneboard order by reg desc,restep asc)b)a";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
-
+				
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					OneBoardDto dto = new OneBoardDto();
@@ -181,8 +178,6 @@ public class OneBoardDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, myid);
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, end);
 
 				rs = pstmt.executeQuery();
 				while (rs.next()) {

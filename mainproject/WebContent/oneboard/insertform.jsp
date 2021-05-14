@@ -46,7 +46,7 @@
 				//세션에서 아이디 얻어오기
 				String myid=(String)session.getAttribute("id");
 			%>
-		<caption><b><%=num.equals("0")?"글쓰기":"답글쓰기" %></b></caption>
+		<caption><b><%=num.equals("0")?"1:1 문의 작성":"답글 작성" %></b></caption>
 		<input type="text" name="subject" class="form-control" id="bdTitle"
 		placeholder="제목을 입력해주세요." required="required">
 		<div class="form-group">
