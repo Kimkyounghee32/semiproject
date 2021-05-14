@@ -103,7 +103,7 @@ div.mainjayu{
 				s+="<table>";
 				s+="<tr align='center'>";
 				/* s+="<td>"+data[elt].num+"</td>"; */
-				s+="<td>"+"<span class='glyphicon glyphicon-menu-right'></span>"+data[elt].subject+"</td>";
+				s+="<td>"+data[elt].subject+"</td>";
 				s+="</tr>";
 				});
 				s+="</table>";
@@ -133,7 +133,7 @@ div.mainjayu{
 				s+="<table>";
 				s+="<tr align='center'>";
 				/* s+="<td>"+data[elt].num+"</td>"; */
-				s+="<td>"+"<span class='glyphicon glyphicon-menu-right'></span>"+data[elt].subject+"</td>";
+				s+="<td>"+data[elt].subject+"</td>";
 				s+="</tr>";
 				});
 				s+="</table>";
