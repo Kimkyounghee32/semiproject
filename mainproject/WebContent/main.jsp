@@ -18,7 +18,6 @@
 	String body="layout/body.jsp";
 	String go=request.getParameter("go");//경로 포함한 파일명
 	if(go!=null)body=go;
-		
 		String id=(String)session.getAttribute("id");
 
 %>

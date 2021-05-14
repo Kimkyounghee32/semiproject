@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="stylesheet" type="text/css" href="main.css" /> -->
+<!-- <link rel="stylesheetz" type="text/css" href="main.css" /> -->
 <link rel="stylesheet" type="text/css" href="css/gallery.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -54,10 +54,28 @@ System.out.println("end : " + end);
 List<GalleryDto> list = dao.getList(start, end);
 %>
 <script type="text/javascript">
-
 $(function(){
 	next_load();
-	var page=1;
+	var page;
+	var start;
+	var end;
+	var perPage = 4;
+	var totalCount = <%=dao.getTotalCount()%>;
+	var totalPage = <%=totalPage%>;
+	var pageNum = <%=request.getParameter("pageNum")%>;
+	var endPage;
+	console.log("pageNum"+pageNum);
+	
+	if(pageNum == null)
+		page = 1;
+	else
+		page = parseInt(pageNum);
+	start = (page - 1) * perPage + 1
+	end = start + perPage - 1;
+	if(endPage > totalPage)
+		endPage = totalPage;
+	if(end > totalCount)
+		end = totalCount
 	function next_load(){
 		console.log('scrolling..');
 		$.ajax({
@@ -74,8 +92,10 @@ $(function(){
 				$(data).find("photolist").each(function (i, element){
 					var photo = $(this).find("photo").text();
 					console.log($(this).find("photo").text());
+					var path = "main.jsp?go=gallery/view.jsp?num=" 
+					+ $(this).find("num").text() + "&pageNum=" + page + "&key=list";
 					
-					s += "<a class='img-link' href=''>";
+					s += "<a class='img-link' href='"+path+"'>";
 					s += "<div class='img-list'>";
 					s += "<img " + "src='" + photo + "' class='gallery-img'>";
 					s += "<div class='overlay'>"; //$(data).find("writer").text();
@@ -85,6 +105,7 @@ $(function(){
 				});
 				$('#photolist').append(s);
 				page++;
+				console.log("page: " + page)
 				
 			}
 			/*,error: function(xhr, status, error) {
@@ -118,15 +139,16 @@ $(function(){
 			</ul>
 		</div>
 	</div>
-	<div id="photolist" class="gallery-grid grid grid-gap-s">
-	</div>
 	<div class="container">
 		<button type="button" class="btn btn btn-primary btn-xs"
 			onclick="location.href='main.jsp?go=gallery/galleryupload.jsp'">
-			<span class="glyphicon glyphicon-pencil"></span>글쓰기
+			<span class="glyphicon glyphicon-pencil"></span>Upload Photo
 		</button>
 
 	</div>
+	<div id="photolist" class="gallery-grid grid grid-gap-s">
+	</div>
+	
 
 </body>
 </html>

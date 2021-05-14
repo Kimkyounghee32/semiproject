@@ -5,8 +5,18 @@
 	display: inline-block;
 }
 
+a.img-link {
+	width: inheit;
+	margin: 5px;
+}
+
 .theme {
 	display: flex-inline;
+}
+
+.img-list {
+	/* 	position: relative; */
+	
 }
 
 .image {
@@ -36,27 +46,22 @@ div.container {
 	width: 100%;
 }
 
+div.img-list {
+	/* 	display: inline-flex; */
+	/* 	flex-direction: column; */
+	
+}
+
+img.gallery-img {
+	height: 300px;
+}
+
 ul li {
-	list-style: none;
+	/* 	list-style: none; */
 }
 
 div#photolist {
 	display: flex;
 	flex-wrap: wrap;
-	overflow: hidden;
-}
-
-img.gallery-img {
-	height: 300px;
-	min-width: 100%;
-}
-
-a.img-link {
-	width: 24%;
-	display: block;
-	margin: 0.3%;
-}
-
-div.img-list {
-	overflow: hidden;
+	justify-content: center;
 }

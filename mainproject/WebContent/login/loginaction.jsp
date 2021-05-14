@@ -9,7 +9,7 @@
 <jsp:useBean id="dto" class="data.dto.logindto"></jsp:useBean>
 <jsp:setProperty property="*" name="dto"/>
 <%
-		JSONObject ob=new JSONObject();
+	JSONObject ob=new JSONObject();
 	if(dao.logincheck(dto.getId(), dto.getPwd())){
 		//로그인성공
 		session.setAttribute("id",dto.getId());
@@ -23,3 +23,10 @@
 	}
 
 %><%=ob.toString()%>
+
+
+
+<%
+
+
+%>

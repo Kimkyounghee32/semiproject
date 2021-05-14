@@ -10,6 +10,7 @@ public class GalleryDto {
 	private String imgRealName;
 	private int likes;
 	private int readcount;
+	private String hashtag;
 	private Timestamp writeday;
 	public String getNum() {
 		return num;
@@ -52,6 +53,13 @@ public class GalleryDto {
 	}
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
+	}
+	
+	public String getHashtag() {
+		return hashtag;
+	}
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
 	}
 	public Timestamp getWriteday() {
 		return writeday;

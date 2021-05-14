@@ -25,12 +25,15 @@ GalleryDto dto = dao.getData(num);
 %>
 <body>
 	<div class="container PhotoNavWrap">
-		<img src="<%="upload/" + dto.getImgRealName()%>" class="imgview" display="none">
+		<img src="<%="upload/" + dto.getImgRealName()%>" class="imgview"
+			display="none">
 	</div>
-	
+
 	<div class="container info-wrap">
 		<div class="addthis_inline_share_toolbox">
+			
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-609b2bdb3ea2638e"></script>
+
 		</div>
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
 
