@@ -33,6 +33,31 @@ public class logindao {
 		return newpwd;
 	}
 
+	public void mypw(String pwd, String id) {
+		// 패스워드변경
+			// 0이 salt 1이 패스워드
+			
+			DbConnect db = new DbConnect();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String[] pwda=pwdhex(pwd);
+			
+			String sql = "update users set  pwd=? ,salt=? where id=?";
+			try {
+				conn = db.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, pwda[1]);
+				pstmt.setString(2, pwda[0]);
+				pstmt.setString(3, id);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("mypw에러" + e.getMessage());
+			} finally {
+				db.dbClose(pstmt, conn);
+			}
+	}
+	
 	public String findpw(String id, String email) {
 		// 임시 비밀번호를 해싱해서 DB에 저장한다
 		if (findid(email).equals(id)) {
@@ -230,4 +255,6 @@ public class logindao {
 		return false;
 	}
 
+	
+	
 }

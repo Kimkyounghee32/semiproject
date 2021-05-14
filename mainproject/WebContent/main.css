@@ -3,7 +3,7 @@
 div.page {
 /*    border: 1px solid black; */
    min-width: 1200px;
-   max-width: 1800px;
+   max-width: 1200px;
    margin: auto;
    padding: 10px;
    height: 100vh;
