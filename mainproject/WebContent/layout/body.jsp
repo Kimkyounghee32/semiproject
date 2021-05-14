@@ -13,6 +13,19 @@
 <link rel="stylesheet" type="text/css" href="main.css" />
 
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
+div.maininfo{
+	font-size: 15pt;
+	font-family : Noto Sans KR;
+	color: #5D5D5D;
+}
+
+div.mainjayu{
+	font-size: 15pt;
+	font-family : Noto Sans KR;
+	color: #5D5D5D;
+	
+}
 </style>
 
 </head>
@@ -71,42 +84,69 @@
 	</div>
 	
 	<div class="mainboard">
+	
 	<div class="maininfo">
-		<table class="table .table-hover">
-		<caption><b>정보게시판</b></caption>
-		<tr>
-			<td>정보게시판
-			</td>
-		</tr>
-		<tr>
-			<td>정보게시판2
-			</td>
-		</tr>
-		<tr>
-			<td>정보게시판3
-			</td>
-		</tr>
-		</table>
+	<script type="text/javascript">
+		$(function(){
+			
+			$.ajax({
+				type:"get",
+				url:"/mainproject/board/info/getbestread.jsp",
+				dataType:"json",
+				success:function(data){
+					console.log(data);
+				var s="";
+				s+="<b>정보공유게시판 인기글</b>";
+				s+="<hr>";
+				$.each(data,function(elt){ //json는 배열 데이터 읽듯이 읽는다
+						console.log(data.elt);
+				s+="<table>";
+				s+="<tr align='center'>";
+				/* s+="<td>"+data[elt].num+"</td>"; */
+				s+="<td>"+"<span class='glyphicon glyphicon-menu-right'></span>"+data[elt].subject+"</td>";
+				s+="</tr>";
+				});
+				s+="</table>";
+				
+				$("div.maininfo").html(s);
+				}
+			});
+		});
+	</script>
 	</div>
-
+	
 	<div class="mainjayu">
-		<table class="table .table-hover">
-		<caption><b>자유게시판</b></caption>
-		<tr>
-			<td>자유게시판
-			</td>
-		</tr>
-		<tr>
-			<td>자유게시판2
-			</td>
-		</tr>
-		<tr>
-			<td>자유게시판3
-			</td>
-		</tr>
-		</table>
+		<script type="text/javascript">
+		$(function(){
+			
+			$.ajax({
+				type:"get",
+				url:"/mainproject/board/jayu/getbestread.jsp",
+				dataType:"json",
+				success:function(data){
+					console.log(data);
+				var s="";
+				s+="<b>자유게시판 인기글</b>";
+				s+="<hr>";
+				$.each(data,function(elt){ //json는 배열 데이터 읽듯이 읽는다
+						console.log(data.elt);
+				s+="<table>";
+				s+="<tr align='center'>";
+				/* s+="<td>"+data[elt].num+"</td>"; */
+				s+="<td>"+"<span class='glyphicon glyphicon-menu-right'></span>"+data[elt].subject+"</td>";
+				s+="</tr>";
+				});
+				s+="</table>";
+				
+				$("div.mainjayu").html(s);
+				}
+			});
+		});
+	</script>
 	</div>
-	</div>
+	
+	
+</div>
 	
 </div>
 </body>

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
+
+import data.dto.InfoBoardDto;
 import data.dto.jayuBoardDto;
 import oracle.db.DbConnect;
 
@@ -212,6 +214,44 @@ public class jayuBoardDao {
 			
 			return list;
 		}
+		
+		
+		public List<InfoBoardDto> getBestRead()
+		{
+			List<InfoBoardDto> list=new Vector<InfoBoardDto>();
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			conn=db.getConnection();
+			
+			String sql = "select * from jayuboard where rownum<=3 order by readcount"; 
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				//실행
+				rs=pstmt.executeQuery();
+				while(rs.next())
+				{
+					InfoBoardDto dto=new InfoBoardDto();
+					dto.setNum(rs.getInt("num"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setReadcount(rs.getInt("readcount"));
+					
+					list.add(dto);
+				}
+					
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("getbestRead에러"+e.getMessage());
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return list;
+		}
+			
 		
 		//num에 해당하는 readcount 1 증가
 		public int updateReadcount(String num) 
