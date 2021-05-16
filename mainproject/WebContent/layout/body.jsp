@@ -26,6 +26,15 @@ div.mainjayu{
 	color: #5D5D5D;
 	
 }
+.link-wrap{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+}
+.jayu-wrap{
+
+}
 </style>
 
 </head>
@@ -98,15 +107,14 @@ div.mainjayu{
 				var s="";
 				s+="<b>정보공유게시판 인기글</b>";
 				s+="<hr>";
+				s+="<div>";
 				$.each(data,function(elt){ //json는 배열 데이터 읽듯이 읽는다
 						console.log(data.elt);
-				s+="<table>";
-				s+="<tr align='center'>";
 				/* s+="<td>"+data[elt].num+"</td>"; */
-				s+="<td>"+data[elt].subject+"</td>";
-				s+="</tr>";
+				s+="<div><a href='/mainproject/main.jsp?go=board/jayu/content.jsp?num="+data[elt].num+"'>"+data[elt].subject+"</a></div>";
+				
 				});
-				s+="</table>";
+				s+="</div>";
 				
 				$("div.maininfo").html(s);
 				}
@@ -128,15 +136,13 @@ div.mainjayu{
 				var s="";
 				s+="<b>자유게시판 인기글</b>";
 				s+="<hr>";
+				s+="<div class='list-wrap'>";
 				$.each(data,function(elt){ //json는 배열 데이터 읽듯이 읽는다
 						console.log(data.elt);
-				s+="<table>";
-				s+="<tr align='center'>";
 				/* s+="<td>"+data[elt].num+"</td>"; */
-				s+="<td>"+data[elt].subject+"</td>";
-				s+="</tr>";
+				s+="<div class='link-wrap'><a class='jayulink' href='/mainproject/main.jsp?go=board/jayu/content.jsp?num="+data[elt].num+"'>"+data[elt].subject+"</a></div>";
 				});
-				s+="</table>";
+				s+="</div>";
 				
 				$("div.mainjayu").html(s);
 				}

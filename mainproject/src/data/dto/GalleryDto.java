@@ -11,6 +11,7 @@ public class GalleryDto {
 	private int likes;
 	private int readcount;
 	private String hashtag;
+	private String pagenum;
 	private Timestamp writeday;
 	public String getNum() {
 		return num;
@@ -66,6 +67,12 @@ public class GalleryDto {
 	}
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
+	}
+	public String getPagenum() {
+		return pagenum;
+	}
+	public void setPagenum(String pagenum) {
+		this.pagenum = pagenum;
 	}
 	
 }

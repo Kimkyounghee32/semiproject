@@ -25,7 +25,7 @@ int endPage;//각 블럭의 끝페이지
 int start;//각 페이지의 시작번호
 int end;//각 페이지의 끝번호
 int no;//각 페이지에서 출력을 시작할 번호
-int perPage = 10;//한페이지에 보여질 글의 갯수
+int perPage = 4;//한페이지에 보여질 글의 갯수
 int perBlock = 5;//한블럭에 보여질 페이지의 갯수
 int currentPage;//현재 페이지
 
@@ -55,36 +55,52 @@ List<GalleryDto> list = dao.getList(start, end);
 %>
 <script type="text/javascript">
 $(function(){
-	next_load();
 	var page;
-	var start;
-	var end;
+	var start = <%=start%>;
+	var end = <%=end%>;
 	var perPage = 4;
 	var totalCount = <%=dao.getTotalCount()%>;
 	var totalPage = <%=totalPage%>;
-	var pageNum = <%=request.getParameter("pageNum")%>;
+	var page;
 	var endPage;
-	console.log("pageNum"+pageNum);
-	
-	if(pageNum == null)
+	console.log("totalPage:"+totalPage);
+	console.log("total count:"+totalCount);
+	if(page == null)
 		page = 1;
 	else
-		page = parseInt(pageNum);
+		page = parseInt(<%=request.getParameter("pageNum")%>);
+	console.log("onload page: "+page);
+	next_load();
+	page++;
+	start += perPage;
+	end += perPage;
+	console.log("page: " + page)
+	console.log("start:" + start);
+	console.log("end:" + end);
+	
+	/*
 	start = (page - 1) * perPage + 1
 	end = start + perPage - 1;
 	if(endPage > totalPage)
 		endPage = totalPage;
 	if(end > totalCount)
-		end = totalCount
+		end = totalCount;
+	*/
+	var uploadpath="main.jsp?go=gallery/galleryupload.jsp";
+
+			
 	function next_load(){
 		console.log('scrolling..');
+		//console.log(page);
+		//console.log(perPage);
+		
 		$.ajax({
 			type: "get", 
 			dataType:"xml", 
 			url:"gallery/gallerydata.jsp",
 			data:{
-				"start":<%=start%>,
-				"end":<%=end%>
+				"start":start,
+				"end":end
 			},
 			success:function(data){
 				var s = "";
@@ -104,9 +120,14 @@ $(function(){
 					s += "</a>";
 				});
 				$('#photolist').append(s);
+				/*
 				page++;
+				start += perPage;
+				end += perPage;
 				console.log("page: " + page)
-				
+				console.log("start:" + start);
+				console.log("end:" + end);
+				*/
 			}
 			/*,error: function(xhr, status, error) {
 				console.log("수신실패");
@@ -115,12 +136,26 @@ $(function(){
 		});	
 	}
 	$(window).scroll(function(){
-		console.log($(document).height());
-		console.log($(window).height());
+		//console.log($(document).height());
+		//console.log($(window).height());
 	  	if($(window).scrollTop()+100>=$(document).height() - $(window).height()){
+			if(page > totalPage){
+				console.log("if page:"+ page);
+				console.log("if totalPage:"+ totalPage);
+				console.log("스크롤 끝");
+				return;
+			}
 			next_load();
+			page++;
+				start += perPage;
+				end += perPage;
+				console.log("page: " + page)
+				console.log("start:" + start);
+				console.log("end:" + end);
+			
 		}
 	});
+	//$("#uploadbtn");
 });
 
 
@@ -140,15 +175,14 @@ $(function(){
 		</div>
 	</div>
 	<div class="container">
-		<button type="button" class="btn btn btn-primary btn-xs"
-			onclick="location.href='main.jsp?go=gallery/galleryupload.jsp'">
-			<span class="glyphicon glyphicon-pencil"></span>Upload Photo
-		</button>
+		<button id="uploadbtn" type="button"
+			class="btn btn btn-primary btn-xs" onclick="location.href='main.jsp?go=gallery/galleryupload.jsp'">Upload Photo</button>
+
+
 
 	</div>
-	<div id="photolist" class="gallery-grid grid grid-gap-s">
-	</div>
-	
+	<div id="photolist" class="gallery-grid grid grid-gap-s"></div>
+
 
 </body>
 </html>

@@ -8,8 +8,11 @@
  <data>
 <%
 	String num=request.getParameter("num");
+	System.out.println("reqpram num :" + num);
 	int start = Integer.parseInt(request.getParameter("start"));
 	int end = Integer.parseInt(request.getParameter("end"));
+	System.out.println("start: " + start);
+	System.out.println("end: " + end);
 	GalleryDao dao=new GalleryDao();
 	List<GalleryDto> list=dao.getList(start, end);
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");

@@ -22,7 +22,7 @@ if (id != null) {
 			
 			
 		}else if (atag.equals("갤러리")) {
-		
+			
 		
 		} else {
 			//내정보

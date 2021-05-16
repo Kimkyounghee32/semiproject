@@ -85,6 +85,8 @@
 					
 						
 						$("#bte").html(s);
+					} else if(atag=="갤러리") {
+						next_load()
 					}
 				},error:function(request,error){
 					console.log("code:"+request.status+"\n"+request.responseText+"\n"+"error:"+error);
@@ -108,8 +110,23 @@
 			}
 		});
 	});
+	/*
+	function next_load() {
+		type: "get", 
+		dataType:"xml", 
+		url:"gallery/gallerydata.jsp",
+		data:{
+			"id": id,
+			"start":start,
+			"end":end
+		}, success:function(data){
+			var s = "";
+			$(data).find("photolist").
+		}
 
-
+	
+	}
+*/
 
 </script>
 </html>

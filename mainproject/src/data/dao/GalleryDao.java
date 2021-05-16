@@ -14,21 +14,27 @@ public class GalleryDao {
 	DbConnect db = new DbConnect();
 
 	// Insert
-	public void uploadGallery(String fileName, String fileRealName) {
-		
-		String sql = "insert into Gallery values (seq_mini.nextval,?,?,?,?,0,0,sysdate)";
+	public void uploadGallery(GalleryDto dto) {
+
+		String sql = "insert into Gallery values (seq_mini.nextval,?,?,?,0,0,?,sysdate,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		conn = db.getConnection();
-
+		System.out.println("fileName: " + dto.getImgName() + "\n upload success");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "testWriter");
-			pstmt.setString(2, "testSubject");
-			pstmt.setString(3, fileName);
-			pstmt.setString(4, fileRealName);
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getImgName());
+			pstmt.setString(3, dto.getImgRealName());
+			pstmt.setString(4, dto.getHashtag());
+			pstmt.setString(5, dto.getSubject());
+//			System.out.println("dao.java img name: " + dto.getImgName());
+//			System.out.println("dao.java writer: " + dto.getWriter());
+//			System.out.println("dao.java RealName: " + dto.getImgRealName());
+//			System.out.println("dao.java hashtag: " + dto.getHashtag());
+//			System.out.println("dao.java subject: " + dto.getSubject());
 			pstmt.execute();
 
 		} catch (SQLException e) {
@@ -132,48 +138,6 @@ public class GalleryDao {
 		return list;
 	}
 
-	public List<GalleryDto> getPage(int start,int end) {
-		List<GalleryDto> list = new Vector<GalleryDto>();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		conn = db.getConnection();
-		
-		String sql = "select a.* from (select ROWNUM as RNUM,b.* from "
-				+ "(select * from Gallery order by num desc)b)a " + "where a.RNUM>=? and a.RNUM<=?";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-
-			// 바인딩
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-
-			// 실행
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				GalleryDto dto = new GalleryDto();
-				dto.setNum(rs.getString("num"));
-				dto.setWriter(rs.getString("writer"));
-				dto.setSubject(rs.getString("subject"));
-				dto.setImgName(rs.getString("imgName"));
-				dto.setImgRealName(rs.getString("imgRealname"));
-				dto.setLikes(rs.getInt("likes"));
-				dto.setReadcount(rs.getInt("readcount"));
-				dto.setWriteday(rs.getTimestamp("writeday"));
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			db.dbClose(rs, pstmt, conn);
-		}
-
-		return list;
-	}
-
 	// num에 해당하는 readcount 1 증가
 	public int updateReadcount(String num) {
 		Connection conn = null;
@@ -205,17 +169,18 @@ public class GalleryDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
+
 			pstmt.setString(1, num);
-			pstmt.execute();
+			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
-		return n;
+		return -1;// DB 오류
 	}
-	  
+
 	public GalleryDto getData(String num) {
 		GalleryDto dto = new GalleryDto();
 		Connection conn = null;
@@ -275,18 +240,43 @@ public class GalleryDao {
 	}
 
 	// 삭제
-	public void deleteGallery(String num) {
+	public int deleteGallery(String num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-
+		ResultSet rs = null;
 		conn = db.getConnection();
 
 		String sql = "delete from Gallery where num=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, num);
-			pstmt.execute();
+			pstmt.setInt(1, Integer.parseInt(num));
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		return -1;// db 오류
+
+	}
+
+	public String getUserID(String num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		conn = db.getConnection();
+
+		String sql = "select writer from gallery where num=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(num));
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getString(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -294,6 +284,32 @@ public class GalleryDao {
 			db.dbClose(pstmt, conn);
 		}
 
+		return null; // DB 오류
 	}
 
+	public int like(String userID, String num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		conn = db.getConnection();
+
+		String sql = "insert into likey values (?,?)";
+
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, num);
+			return pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+
+		return -1; // DB 오류
+		
+	}
 }

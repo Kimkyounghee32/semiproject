@@ -2,39 +2,47 @@
 <%@page import="data.dao.GalleryDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" charset="UTF-8">
 
-<title>uploading...</title>
+<jsp:useBean id="dao" class="data.dao.GalleryDao"/>
+<jsp:useBean id="dto" class="data.dto.GalleryDto"/> 
+<%
+	
+	dto.setWriter(request.getParameter("writer"));
+	System.out.println("upact:"+dto.getNum());
+	System.out.println("upact request.getparameter writer:"+request.getParameter("writer"));
+	System.out.println("upact:"+dto.getImgName());
+	System.out.println("upact:"+dto.getImgRealName());
+	System.out.println("upact:"+dto.getHashtag()); 
+%>
 
-
-</head>
-<body>
-	<%
-		String directory = application.getRealPath("/upload/");
-		System.out.println(directory);
+	<%	
+		
+		String directory = application.getRealPath("/upload");
+		System.out.println("getRealPath(\"/upload\"):" + directory);
 		int maxSize = 1024 * 1024 * 10;
 		String encoding="UTF-8";
 		
+		String writer =(String) session.getAttribute("id");
+		//System.out.println("writer: " + writer);		
 		//생성자로 파일전송 바로 수행,
 		MultipartRequest multipartRequest = new MultipartRequest(request, directory, maxSize, encoding, new DefaultFileRenamePolicy());
 		
+		System.out.println("test:"+multipartRequest.getParameter("writer"));
 		String fileName = multipartRequest.getOriginalFileName("file");
 		String fileRealPath = multipartRequest.getFilesystemName("file");
 		
-		new GalleryDao().uploadGallery(fileName, fileRealPath);
-		 
+		System.out.println("upload Action fileName: " + fileName );
+		System.out.println("upload Action fileRealPathName: " + fileRealPath );
+		dto.setWriter(writer);
+		dto.setImgName(fileName);
+		dto.setImgRealName(fileRealPath);
+		System.out.println("RealName(): " + dto.getImgRealName());
+		dao.uploadGallery(dto);
 		/* out.write("파일명: " + fileName + "<br>");
 		out.write("실제 파일명: " + fileRealPath +"<br>");
 		 */
-		
+		response.sendRedirect("../main.jsp?go=gallery/landscape.jsp");
 	%>
-	<script type="text/javascript">
-		location.href="../main.jsp?go=gallery/landscape.jsp";
-	</script>
-</body>
-</html>
