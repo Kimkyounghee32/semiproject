@@ -108,10 +108,10 @@ div.mainjayu{
 				s+="<b>정보공유게시판 인기글</b>";
 				s+="<hr>";
 				s+="<div>";
-				$.each(data,function(elt){ //json는 배열 데이터 읽듯이 읽는다
+				$.each(data,function(elt){
 						console.log(data.elt);
 				/* s+="<td>"+data[elt].num+"</td>"; */
-				s+="<div><a href='/mainproject/main.jsp?go=board/jayu/content.jsp?num="+data[elt].num+"'>"+data[elt].subject+"</a></div>";
+				s+="<div><a href='/mainproject/main.jsp?go=board/info/content.jsp?num="+data[elt].num+"'>"+data[elt].subject+"</a></div>";
 				
 				});
 				s+="</div>";
