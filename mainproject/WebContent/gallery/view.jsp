@@ -43,7 +43,7 @@ GalleryDto dto = dao.getData(num);
 						</svg>
 					</div>
 					<div class="icon-wrap">
-						<svg data-toggle="modal" data-target="#myModal" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-share basebtn" viewBox="0 0 16 16">
+						<svg data-toggle="" data-target="#myModal" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-share basebtn" viewBox="0 0 16 16">
 							<path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
 						</svg>
 					</div>
@@ -57,7 +57,7 @@ GalleryDto dto = dao.getData(num);
 				<div class="userinfo-wrap">
 					<div class="userInfo">
 						
-							<a class ="userId"href="#"><%= %></a>
+							<a class ="userId" href="#"><%=dto.getWriter() %></a>
 							<a class ="" href="#"></a>
 						</div>
 					</div>
@@ -87,7 +87,6 @@ GalleryDto dto = dao.getData(num);
 			}
 		
 		</script>
-		<div class="container">test</div>	
 
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	
@@ -113,7 +112,7 @@ GalleryDto dto = dao.getData(num);
 			</div>
 		</div>
 	
-	</div>
+	
 
 </body>
 </html>

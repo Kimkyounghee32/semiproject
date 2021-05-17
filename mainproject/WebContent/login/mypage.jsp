@@ -1,3 +1,5 @@
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,8 +11,15 @@
 <link rel="stylesheet" type="text/css" href="/mainproject/css/logincss/loginform.css" />
 <link rel="stylesheet" type="text/css" href="/mainproject/main.css" />
 <link rel="stylesheet" type="text/css" href="/mainproject/css/logincss/mypage.css" />
+<link rel="stylesheet" type="text/css" href="/mainproject/css/logincss/mygallery.css" />
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
+<%
+String id=(String)session.getAttribute("id");
+
+JSONObject ob = new JSONObject();
+JSONArray arry = new JSONArray();
+%>
 <body>
 	<div class="page">
 		<div class="logodiv">
@@ -20,7 +29,7 @@
 		<div class="category">
 			<b>카테고리</b>
 			<div id="myinfo">
-				<a>내 정보</a>
+				<a>내 정보</a> 
 			</div>
 			<div id="infobrd">
 				<a>정보게시판</a>
@@ -86,7 +95,23 @@
 						
 						$("#bte").html(s);
 					} else if(atag=="갤러리") {
-						next_load()
+						var s="<div class='list-wrap'>";
+						
+						$.each(data, function(i,elt){
+							console.log(data[i].num);
+							/*s+="<div class='img-wrap'>";
+							s+="<img src='"+data[i].imgrealpath+"'>";
+							s+="</div>";*/
+							
+							s += "<a class='img-link' href='#'>";
+							s += "<div class='img-list'>";
+							s += "<img value='"+data[i].num+"'src='" + data[i].imgrealpath + "' class='gallery-img'>";
+							s += "</div>";				
+							s += "</a>";
+						});
+						
+						s+="</div>";
+						$("#bte").html(s);
 					}
 				},error:function(request,error){
 					console.log("code:"+request.status+"\n"+request.responseText+"\n"+"error:"+error);
@@ -110,23 +135,62 @@
 			}
 		});
 	});
-	/*
-	function next_load() {
-		type: "get", 
-		dataType:"xml", 
-		url:"gallery/gallerydata.jsp",
-		data:{
-			"id": id,
-			"start":start,
-			"end":end
-		}, success:function(data){
-			var s = "";
-			$(data).find("photolist").
+	
+	$(document).on("click","img.gallery-img", function(){
+		var test = $(this).attr('value');
+		//console.log(test);
+		//console.log("id:" + $(this).attr('id'));
+		if(confirm('삭제하시겠습니까?')) {
+			console.log('삭제');
+			$.ajax({
+				type:"post",
+				dataType:"html",
+				url:"../gallery/deletegalleryaction.jsp",
+				data:{
+					"num":$(this).attr('value'),
+					"id": "<%=id%>"
+				},
+				success:function(data){
+					console.log("삭제이벤트 success");
+					load_gallery();
+				}
+			});
 		}
+	});
+	function load_gallery(){
+		var s="<div class='list-wrap'>";
+			$.ajax({
+				type:"post",
+				url:"mypageboard.jsp",
+				data:{"atag":"갤러리"},
+				dataType:"json",
+				success:function(data){
+							
+					$.each(data, function(i,elt){
+						console.log(data[i].num);
+						/*s+="<div class='img-wrap'>";
+						s+="<img src='"+data[i].imgrealpath+"'>";
+						s+="</div>";*/
+						
+						s += "<a class='img-link' href='#'>";
+						s += "<div class='img-list'>";
+						s += "<img value='"+data[i].num+"'src='" + data[i].imgrealpath + "' class='gallery-img'>";
+						s += "</div>";				
+						s += "</a>";
+					});
+					s+="</div>";
+					$("#bte").html(s);
+				}
+					
+			});
+	}	
+	/*
+		
 
 	
-	}
-*/
+	
+	*/
+
 
 </script>
 </html>

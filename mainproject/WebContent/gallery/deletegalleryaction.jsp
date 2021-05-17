@@ -3,10 +3,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("utf-8");
+System.out.println("del action 진입");
+
 String userID = null;
-if (session.getAttribute("userID") != null) {
-	userID = (String) session.getAttribute("userID");
+if (session.getAttribute("id") != null) {
+	userID = (String) session.getAttribute("id");
 }
+
 GalleryDao gDao = new GalleryDao();
 
 if (userID == null) {
@@ -18,22 +22,21 @@ if (userID == null) {
 	script.close();
 	return;
 }
+System.out.println("del action 세션 유효");
+
 String num = null;
+
 
 if(request.getParameter("num") != null) {
 	num = request.getParameter("num");
 }
+System.out.println(num);
 
-if(userID.equals(gDao.getUserID(num))){
-	int result = new GalleryDao.deleteGallery(num);	
+if(userID.equals(gDao.getUserID(num)) || userID.equals("admin")){
+	int result = gDao.deleteGallery(num);	
 }
-request.setCharacterEncoding("utf-8");
-String repTitle = null;
-String reportContent = null;
-GalleryDao dao = new GalleryDao();
-String num = request.getParameter("num");
-String pageNum = request.getParameter("pageNum");
-dao.deleteGallery(num);
 
-response.sendRedirect("../main.jsp?go=gallery/gallery.jsp?pageNum=" + pageNum);
+String pageNum = request.getParameter("pageNum");
+//response.sendRedirect("../main.jsp?go=gallery/gallery.jsp?" + pageNum);
+response.sendRedirect("/mainproject/login/mypage.jsp");
 %>

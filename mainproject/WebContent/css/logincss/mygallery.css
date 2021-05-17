@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+div.img-wrap{
+	overflow: hidden;	
+}
+
+div#photolist {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+img.gallery-img {
+	height: 100px;
+	min-width: 100%;
+}
+
+a.img-link {
+	width: 10%;
+	display: block;
+	margin: 0.3%;
+}
+
+div.img-list {
+	overflow: hidden;
+}
+a.img-link {
+    width: auto;
+    display: inline-table;
+    margin: 0.3%;
+}
+.list-wrap {
+	margin: 5%;
+    width: inherit;
+    display: flex;
+    flex-wrap: wrap;
+}

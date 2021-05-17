@@ -51,11 +51,14 @@ img.verticalimg {
 	width: 5%;
 }
 
-
 .userinfo-wrap {
 	display: flex;
 }
 
 a.userId {
     font-size: 2em;
+}
+div#bte {
+    display: flex;
+    flex-wrap: wrap;
 }
