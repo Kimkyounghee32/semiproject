@@ -2,8 +2,8 @@
 
 div.page {
 /*    border: 1px solid black; */
-   min-width: 1200px;
-   max-width: 1200px;
+     min-width: 1000px;
+   max-width: 1000px;
    margin: auto;
    padding: 10px;
    height: 100vh;
@@ -13,9 +13,6 @@ div#title>a {
    color: black;
 }
 
-div.logodiv2{
-	margin-left: 280px;
-}
 
 div.logodiv {
     text-align: center;
@@ -28,14 +25,18 @@ div#loginpage input {
 
 div#loginpage {
     margin-right: 3px;
-   float:right;
-   font-size:18px;
+      color: #5D5D5D;
+   display: flex;
+   justify-content: flex-end;
+   font-family: Noto Sans KR;
 }
 
 div.logo {
    display: inline-flex;
-   font-size: 80px;
+   font-size: 75px;
 /*    margin-left: 200px; */
+font-family: Noto Sans KR;
+
 }
 
 div.logo>img {
@@ -44,14 +45,13 @@ div.logo>img {
 
 div#search {
     display: flex;
-    height: 40px;
     justify-content: flex-end;
     margin-right: 17px;
 }
 
 div#nav {
    margin-top: 10px;
-   z-index: 200;
+   padding:0px;
 }
 
 div#nav>nav {
@@ -59,12 +59,14 @@ div#nav>nav {
    text-align: center;
    height: 60px;
 }
-
-div#search>input {
+nav.navbar *{
+	font-family: Noto Sans KR;
+}
+div#search input {
    width: 200px;
 }
 
-div#search>button {
+div#search button {
    width: 80px;
 }
 
@@ -78,6 +80,7 @@ div.container-fluid ul.navcategory>li {
    padding-right: 50px;
    padding-left: 50px;
    flex: 1;
+   z-index: 10;
 }
 
 div.container-fluid ul.navcategory>li>a {
@@ -93,8 +96,7 @@ ul.navcategory ul {
    padding: 0;
    margin: auto;
    font-size: 30px;
-   background-color: #1263CE;
-   border-radius: 10px;
+      background-color: white;
    display: none;
 }
 
@@ -103,7 +105,8 @@ ul.navcategory li:hover ul {
 }
 
 ul.navcategory ul>li>a {
-   color: white;
+      color: #4B89DC;
+   font-size: 25px;
 }
 
 ul.Gallery {
@@ -190,4 +193,7 @@ a:hover{
 }
 a{
 	color:black;
+}
+div.body{
+	min-height: 1000px;
 }

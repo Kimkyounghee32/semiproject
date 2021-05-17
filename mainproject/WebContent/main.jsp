@@ -13,6 +13,7 @@
 </head>
 <body>
 <%
+
 	//body를 읽어서 널일경우 body.jsp를 include
 	//널이 아닐경우 해당 파일을 include
 	String body="layout/body.jsp";

@@ -1,0 +1,2 @@
+java resources -> data.dao -> mailserver.java파일안에 smtp를 허용한 네이버 계정이 필요합니다
+WebContent -> qrform -> //ip주소를 입력해주세요 부분을 자신의 도메인 or ip를 입력해주세요, %3a9000는 포트번호입니다 필요없을경우 지워주세요
