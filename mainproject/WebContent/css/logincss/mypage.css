@@ -2,9 +2,9 @@
 
 
 .mypage {
-    border: 1px solid black;
+/*     border: 1px solid black; */
     display: flex;
-    height: 800px;
+    height: 400px;
 }
 
 div.category {
@@ -12,21 +12,38 @@ div.category {
     width: 25%;
     font-size: 30px;
     border: 1px solid black;
+     border-radius: 57px;
+    background-color: #4B89DC;
 }
 
+div.category>div>a{
+	color:white;
+}
 
-div.category>div{
+div.category div{
 	margin-top:30px;
+	color: white;
 }
 
 div.category>b {
-    font-size: 50px;
+    color: white;
 }
 
 div.boardtable {
     font-size: 20px;
+       margin-left: 30px;
+    width: 75%;
 }
 
 td.subject {
-    width: 700px;
+  width: 529px;
+}
+
+div.mmg{
+	margin-top: 30px;
+}
+
+
+caption{
+	color:#4B89DC;
 }

@@ -13,7 +13,7 @@
 	String subject=request.getParameter("subject");
 	
 	OneBoardDao dao=new OneBoardDao();
-	dao.updateBoard(num, subject, content);
+// 	dao.updateBoard(num, subject, content);
 	//BoardDto dto=dao.getData(num);
 
 	String path="../main.jsp?go=oneboard/oneboardlist.jsp?pageNum="+pageNum;

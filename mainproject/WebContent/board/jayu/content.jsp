@@ -8,18 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>semi_jayucontent</title>
-<link rel="stylesheet" href="/mainproject/css/infoBoard.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/mainproject/css/infoBoard.css">
 <style type="text/css">
 	span.glyphicon-thumbs-up{
 		cursor: pointer;
 		color: #3F97FA;
 	}
 </style>
-
-<body>
 <%
 	 //프로젝트의 경로
 	 String root=request.getContextPath();
@@ -28,7 +26,6 @@
 	//로그인한 상태인지 확인
 	String loginok=(String)session.getAttribute("loginok");
 %>
-</body>
 <script type="text/javascript">
 
 		//댓글 출력하는 함수
@@ -238,7 +235,7 @@
 	String mid=dto.getMyid();
 	
 %>
-<table class="table table-bordered" style="width: 1000px; border-color: white;">
+<table class="table table-bordered" style="border-color: white;"> 
 	<caption><h4>자유게시글 상세</h4></caption>
 	<tr>
 		<td colspan="4">
@@ -275,17 +272,7 @@
 		<button type="button" class="btncontent btn btn-primary btn-xs"
 			onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayuform.jsp'">글쓰기</button>
 			
-		<%-- <%
-				//널이아니면 읽어들여야하는것들 다 써주자
-				String reple="/mainproject/main.jsp?go=board/infoform.jsp?num="
-					+dto.getNum()+"&reg="+dto.getReg()+"&restep="+
-					dto.getRestep()+"&relevel="+dto.getRelevel()
-					+"&pageNum="+pageNum;
-			%>
-		<button type="button" class="btncontent btn btn-primary btn-xs" style="width: 60px;"
-			onclick="location.href='<%=reple%>'">답글쓰기</button> --%>
-			
-		<button type="button" class="btn btn btn-primary btn-xs"
+			<button type="button" class="btncontent btn btn btn-primary btn-xs" 
 			style="width: 60px; margin-left: 2px;"
 			onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayulist.jsp?pageNum=<%=pageNum%>'">목록</button>
 			
@@ -306,8 +293,8 @@
 				
 				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
-				{		
+					if(myid!=null && loginok!=null && myid.equals(dto.getMyid())){ 
+			if(myid.equals("admin")){ 		
 			%>
 		
 		<button type="button" class="btn btn btn-primary btn-xs"
@@ -317,7 +304,15 @@
 				<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
 					id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button>		
-		<%} %>
+				<%}else{%> 
+				<button type="button" class="btn btn btn-primary btn-xs"
+					style="width: 60px; margin-left: 2px;"
+					onclick="location.href='<%=mod%>'" idx="">수정</button>
+					
+				<button type="button" class="btn btn btn-primary btn-xs"
+					style="width: 60px; margin-left: 2px;"
+					id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button>		
+				<%}}%>  
 </td>
 </table>
 	<br>
@@ -331,7 +326,7 @@
 		if(loginok!=null) 	
 		{%>
 			
-		<div style="margin-left: 250px;" class="form-inline" id="add">
+		<div  class="form-inline" id="add">
 		
 			<input type="text" class="form-control" style="width: 700px;"
 				id="replewrite" placeholder="댓글을 입력해주세요">
@@ -339,16 +334,15 @@
 			id="btnrepleconfirm" style="float:500px; height: 30px;">확인</button>
 		</div>
 			
-		<div style="margin-left: 250px;" class="form-inline" id="up">
+		<div class="form-inline" id="up">
 			<input type="text" class="form-control" style="width: 700px;"
 				id="replemod" placeholder="수정할 댓글을 입력해주세요">
 			<button type="button" class="btn btn-primary btn-xs"
 			id="btnreplemod">수정</button>
 			</div>
+				<br> 
 		<%}
 		%>
-			
-<div class="alist"></div>
-
+		<div class="alist"></div>
 </body>
 </html>

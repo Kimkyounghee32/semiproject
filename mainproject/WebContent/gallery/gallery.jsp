@@ -117,6 +117,7 @@ $(function(){
 					s += "</div>";				
 					s += "</a>";
 				});
+				$('#photolist').append(s);
 				/*
 				page++;
 				start += perPage;
@@ -165,9 +166,7 @@ $(function(){
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp?go=gallery/portrait.jsp">인물</a></li>
-				<li class="active"><a href="main.jsp?go=gallery/landscape.jsp">풍경</a></li>
-				<li><a href="main.jsp?go=gallery/animal.jsp">동물</a></li>
+				<li class="active"><a href="main.jsp?go=gallery/gallery.jsp">풍경</a></li>
 			</ul>
 		</div>
 	</div>

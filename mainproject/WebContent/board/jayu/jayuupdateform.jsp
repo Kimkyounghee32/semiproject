@@ -14,13 +14,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
 
-body {
-  padding-top: 70px;
-  margin-left : 20%;
-  margin-right : 20%;
-  padding-bottom: 30px;
-}
-
 span.title{
 	font-family: 'Noto Sans KR';
 	font-size : 20pt;
@@ -29,8 +22,7 @@ span.title{
 }
 
 div.update{
-	margin-left:180px;
-	width: 1120px;
+	width: 100%;
 	height: 1200px;
 }
 

@@ -4,8 +4,6 @@
 
 	table{
 		padding-top: 10px;
-		margin-left : 15%;
-		margin-right : 15%;
 		padding-bottom: 30px;
 	}
 	
@@ -18,8 +16,6 @@
 	
 	div.reple{
 		width: 700px; 
-		margin-left:250px;
-		text-align: left;
 		font-family: Noto Sans KR;
 	}
 	
@@ -51,4 +47,8 @@
 		color: #3F97FA;
 	}
 	
+	
+	button.btncontent{ 
+		font-size:15px; 
+	} 
 	

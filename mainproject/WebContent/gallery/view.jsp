@@ -82,7 +82,6 @@ GalleryDto dto = dao.getData(num);
 				
 			} else {
 				$("img.imgview").css("width", "auto");
-				$("img.imgview").css("height", "1100px");
 				$("img.imgview").css("dsplay", "block");
 			}
 		
@@ -111,8 +110,6 @@ GalleryDto dto = dao.getData(num);
 				</div>
 			</div>
 		</div>
-	
-	
 
 </body>
 </html>

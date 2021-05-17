@@ -36,7 +36,7 @@
 </div>
 	<div class="qrpick">
 		<img  src="http://chart.apis.google.com/chart?cht=qr&chs=350x350&
-		chl=http%3a%2f%2f192.168.0.203%3a9000%2fmainproject%2flogin%2fqrrequest.jsp%3fnum%3d<%=ran[0]%>%26num2%3d<%=ran[1]%>%26num3%3d<%=ran[2]%>">
+		chl=http%3a%2f%2f//ip주소입력해주세요%3a9000%2fmainproject%2flogin%2fqrrequest.jsp%3fnum%3d<%=ran[0]%>%26num2%3d<%=ran[1]%>%26num3%3d<%=ran[2]%>">
 	</div>
 	<div class="qrdiv">
 		<b>모바일 화면에 보이는 <b class="qrnumber"><%=q%></b> 을 선택해주세요</b>

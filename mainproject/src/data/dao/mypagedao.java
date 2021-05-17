@@ -27,10 +27,16 @@ public class mypagedao {
 
 		String sql = "select * from infoboard where Myid=?";
 
+		if(id.equals("admin")) {
+			sql="select * from infoboard";
+		}
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
-			pstmt.setString(1, id);
+			if(!id.equals("admin")){
+				pstmt.setString(1, id);
+			}
 			rs = pstmt.executeQuery();
 			System.out.println("infoboard id:" + id);
 			while (rs.next()) {
@@ -66,11 +72,15 @@ public class mypagedao {
 		conn = db.getConnection();
 
 		String sql = "select * from jayuBoard where Myid=?";
-
+		if(id.equals("admin")) {
+			sql="select * from jayuBoard";
+		}
 		try {
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
-			pstmt.setString(1, id);
+			if(!id.equals("admin")){
+				pstmt.setString(1, id);
+			}
 			rs = pstmt.executeQuery();
 			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			while (rs.next()) {

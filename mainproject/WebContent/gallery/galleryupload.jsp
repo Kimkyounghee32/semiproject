@@ -63,7 +63,7 @@ $(function(){
 <body>
 
 
-	<div class="container" style="height: 1200px; text-align: center;">
+		<div class="container" style="height: 1200px; text-align: center; width: 100%">
 		<div class="form-control">
 			<form action="gallery/uploadAction.jsp" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="writer" value="<%=(String) session.getAttribute("id")%>">

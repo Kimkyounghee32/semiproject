@@ -1,3 +1,4 @@
+<%@page import="oracle.db.DbConnect"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -5,7 +6,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="oracle.db.DbConnect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

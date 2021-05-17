@@ -107,8 +107,8 @@ caption>h4 {
 
 <!-- 게시판 메인 페이지 영역 시작 -->
 <div class="boardlist">
-	<div class="row">
-		<table class="table table-striped" style=" width:1200px; text-align: center; border: 1px solid #dddddd">
+	<div> 
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd"> 
 		<caption><h4>자유게시판</h4></caption>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;" width="60">번호</th>
@@ -223,14 +223,13 @@ if(totalCount>0){
 </div>
 <%}
 %>
-		<div class="container">
-		<!-- <span class="glyphicon glyphicon-chevron-left" id="pre">
-		<span class="glyphicon glyphicon-chevron-right" id="next"></span> -->
+		<div> 
+		<div class="bt" style="display: flex;justify-content: flex-end;"> 
 		<button type="button" class="btn btn btn-primary btn-xs" 
 			style="float: right;  margin-bottom: 50px;"
 			onclick="location.href='/mainproject/main.jsp?go=board/jayu/jayuform.jsp'">
 			<span class="glyphicon glyphicon-pencil">글쓰기</span></button>
-		
+		</div>
 		</div>
 	</div>
 </div>

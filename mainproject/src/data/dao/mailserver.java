@@ -12,11 +12,11 @@ import javax.mail.internet.MimeMessage;
 
 public class mailserver {
 	public static void navermain(String content, String finduser, String subject) {
-			String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+			String host = "smtp.naver.com"; // �꽕�씠踰꾩씪 寃쎌슦 �꽕�씠踰� 怨꾩젙, gmail寃쎌슦 gmail 怨꾩젙
 			String user = "@naver.com"; // 패스워드 (내 계정인가..)
 			String password = ""; 
 			
-			// SMTP 서버 정보를 설정한다.
+			// SMTP �꽌踰� �젙蹂대�� �꽕�젙�븳�떎.
 			Properties props = new Properties();
 			props.put("mail.smtp.host", host);
 			props.put("mail.smtp.port", 587);
@@ -30,13 +30,13 @@ public class mailserver {
 				MimeMessage message = new MimeMessage(session);
 				message.setFrom(new InternetAddress(user));
 				
-				//수신자 메일주소
+				//�닔�떊�옄 硫붿씪二쇱냼
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(finduser)); 
 				
-				// 메일 제목
+				// 硫붿씪 �젣紐�
 				message.setSubject(subject); 
 				
-				// 메일 내용
+				// 硫붿씪 �궡�슜
 				message.setContent(content,"text/html; charset=UTF8"); 
 				
 				// send the message

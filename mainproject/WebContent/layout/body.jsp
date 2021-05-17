@@ -59,7 +59,7 @@ div.mainjayu{
 			</div>
 
 			<div class="item">
-				<img src="image/tenor.gif" alt="">
+				<img src="image/test4.jpg" alt="">
 			</div>
 		</div>
 

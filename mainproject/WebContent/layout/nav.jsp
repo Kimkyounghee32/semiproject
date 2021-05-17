@@ -12,16 +12,8 @@
 <div id="nav" class="container-fluid">
 <nav class="navbar navbar-default">
 				<ul class="navcategory">
-					<li id="gg"><a>Gallery</a>
-						<div>
-							<ul class="Gallery">
-								<li><a href="main.jsp?go=gallery/portrait.jsp">인물</a></li>
-								<li><a href="main.jsp?go=gallery/landscape.jsp">풍경</a></li>
-								<li><a href="main.jsp?go=gallery/animal.jsp">동물</a></li>
-							</ul>
-						</div>
-					</li>
-					<li id="gc"><a >Community</a>
+					<li id="gg"><a href="main.jsp?go=gallery/gallery.jsp">Gallery</a>
+					<li id="gc"><a>Community</a>
 						<div>
 							<ul class="Community">
 								<li><a href="main.jsp?go=board/info/infolist.jsp">정보공유</a></li>

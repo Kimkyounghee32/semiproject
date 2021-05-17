@@ -17,7 +17,7 @@
 </div>
 <div class="lgmdiv">
 		<input type="text" class="lgm form-control" name="id" placeholder="아이디를 입력해주세요">
-		<input type="text" class="lgm form-control" name="pwd" placeholder="패스워드를 입력해주세요">
+		<input type="password" class="lgm form-control" name="pwd" placeholder="패스워드를 입력해주세요">
 		<button id="loginac" class="btn btn-primary" type="submit">로그인</button>
 		<button id="qr" class="btn btn-primary" type="button" onclick="location.href='/mainproject/login/qrform.jsp'">qr코드 로그인</button>
 </div>

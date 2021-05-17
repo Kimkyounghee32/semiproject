@@ -25,7 +25,7 @@
 		<input type="text" id="createid" class="lgmid" name="id" placeholder="아이디를 입력해주세요(필수)">
 		<button type="button" class="dfkid">중복체크</button>
 		<div id="ida"></div>
-		<input type="text" class="lgm" name="pwd" placeholder="패스워드를 입력해주세요(필수)">
+		<input type="password" class="lgm" name="pwd" placeholder="패스워드를 입력해주세요(필수)">
 		<input type="text" class="lgm" name="email" placeholder="이메일을 입력해주세요(필수)">
 		<select class="lgm" name="hpw">
                                         <option value="233">

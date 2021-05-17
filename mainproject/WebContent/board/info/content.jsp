@@ -236,7 +236,7 @@
 	<caption><h4>정보게시글 상세</h4></caption>
 	<tr>
 		<td colspan="4">
-			<b style="font-size: 12pt;">제목&nbsp;
+			<b style="font-size: 12pt;">
 			<%=dto.getSubject()==null?"제목없음":dto.getSubject()%></b></td>
 	</tr>
 	<tr>
@@ -300,8 +300,8 @@
 				
 				//로그인한 아이디와 dto의 아이디가 같을 경우 수정, 삭제 버튼이 보이도록한다
 				//널이 있을때(로그인안했을때) 이퀄쓰면 nullpointexception 나오므로 조건추가(myid!=null)
-				if(myid!=null && loginok!=null && myid.equals(dto.getMyid()))
-				{		
+					if(myid!=null && loginok!=null && myid.equals(dto.getMyid())){ 
+						if(myid.equals("admin")){ 		
 			%>
 		<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
@@ -310,14 +310,24 @@
 				<button type="button" class="btn btn btn-primary btn-xs"
 					style="width: 60px; margin-left: 2px;"
 					id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button>	
-		<%} %>
+					
+		<%}else{%> 
+					<button type="button" class="btn btn btn-primary btn-xs" 
+					style="width: 60px; margin-left: 2px;" 
+					onclick="location.href='<%=mod%>'" idx="">수정</button> 
+					 
+				<button type="button" class="btn btn btn-primary btn-xs" 
+					style="width: 60px; margin-left: 2px;" 
+					id="boarddel" num="" onclick="location.href='<%=del%>'">삭제</button> 
+				 
+				<%}}%> 
 </td>
 </table>
 	<br>
 	
 		<input type="hidden" name="myid" id="myid" value="<%=myid%>" num="">
 		<input type="hidden" name="num" id="num" value="<%=num%>">
-		<b style="margin-left: 250px;">총<span class="su">0</span>개의 댓글이 있습니다</b>
+		<b>총<span class="su">0</span>개의 댓글이 있습니다</b>
 		<br>
 		
 		<%
@@ -325,7 +335,7 @@
 		if(loginok!=null) 	
 		{%>
 			
-		<div style="margin-left: 250px;" class="form-inline" id="add">
+		<div class="form-inline" id="add">
 		
 			<input type="text" class="form-control" style="width: 900px;"
 				id="replewrite" placeholder="댓글을 입력해주세요">
@@ -333,7 +343,7 @@
 			id="btnrepleconfirm" style="float:500px; height: 30px;">확인</button>
 		</div>
 			
-		<div style="margin-left: 250px;" class="form-inline" id="up">
+		<div class="form-inline" id="up">
 			<input type="text" class="form-control" style="width: 900px;"
 				id="replemod" placeholder="수정할 댓글을 입력해주세요">
 			<button type="button" class="btn btn-primary btn-xs"

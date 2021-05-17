@@ -14,13 +14,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
 
-body {
-  padding-top: 70px;
-  margin-left : 20%;
-  margin-right : 20%;
-  padding-bottom: 30px;
-}
-
 span.title{
 	font-family: Noto Sans KR;
 	font-size : 23pt;
@@ -67,7 +60,7 @@ charset="utf-8"></script>
 
 </head>
 <body>
-<div class="container" role="main">
+<div class="container" role="main" style="width: 100%;margin-bottom: 50px;"> 
 	<span class="title">자유게시글 작성</span>
 	<form action="board/jayu/insertaction.jsp" method="post">
 	<input type="hidden" name="num" value="<%=num%>">

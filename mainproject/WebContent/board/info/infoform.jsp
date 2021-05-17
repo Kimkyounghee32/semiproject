@@ -10,13 +10,6 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
 
-body {
-  padding-top: 70px;
-  margin-left : 20%;
-  margin-right : 20%;
-  padding-bottom: 30px;
-}
-
 span.title{
 	font-family: Noto Sans KR;
 	font-size : 23pt;
@@ -63,7 +56,7 @@ charset="utf-8"></script>
 
 </head>
 <body>
-<div class="container" role="main">
+<div class="container" role="main" style="width: 100%;margin-bottom: 50px;"> 
 	<span class="title">정보게시글 작성</span>
 	<form action="board/info/insertaction.jsp" method="post">
 	<input type="hidden" name="num" value="<%=num%>">

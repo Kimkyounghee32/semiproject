@@ -22,8 +22,6 @@
 	else{%>
 <b class="loginjsp" onclick="location.href='login/loginform.jsp'">로그인</b> 
 <b class="loginjsp" onclick="location.href='login/createuser.jsp'">회원가입</b> 
-<b class="loginjsp" onclick="location.href='/mainproject/login/findID.jsp'">아이디찾기</b>
-<b class="loginjsp" onclick="location.href='/mainproject/login/findPW.jsp'">비밀번호찾기</b>
 		
 <%} %>	
 </body>

@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class DbConnect {
 	String oracleDriver="oracle.jdbc.driver.OracleDriver";
-	String oracleUrl="jdbc:oracle:thin:@localhost:1521:xe";
+	String oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
 	
 	public DbConnect() {
 		try {
